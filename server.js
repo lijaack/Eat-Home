@@ -2,12 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const session = require('express-session');
 const passport = require('passport');
-const Sequelize = require('sequelize');
-
-const routes = require("./routes");
+const cors = require('cors')
+const PORT = process.env.PORT || 3001;
 const app = express();
 
-const PORT = process.env.PORT || 3001;
+
+//enable cross origin
+app.use(cors());
 
 
 // Sets up the Express app to handle data parsing
@@ -39,19 +40,19 @@ app.use(function(req, res, next) {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-app.use(routes);
+
 
 // Routes
 // =============================================================
 require("./controllers/eatHomeController.js")(app);
 
+
 // Requiring our models for syncing
 const db = require("./models");
 
 
-// db.sync({ force: false }).then(()=> {
+db.sequelize.sync({ force: true }).then(()=> {
   app.listen(PORT, ()=> {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
   });
-// });
+});

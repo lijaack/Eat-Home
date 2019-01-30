@@ -45,6 +45,7 @@ if (process.env.NODE_ENV === "production") {
 // Routes
 // =============================================================
 require("./controllers/eatHomeController.js")(app);
+require("./controllers/userAuth.js")(app);
 
 
 // Requiring our models for syncing

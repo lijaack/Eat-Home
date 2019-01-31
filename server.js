@@ -1,22 +1,60 @@
 const express = require("express");
-
-const routes = require("./routes");
-const app = express();
+const bodyParser = require("body-parser");
+const session = require('express-session');
+const passport = require('passport');
+const cors = require('cors')
 const PORT = process.env.PORT || 3001;
+const app = express();
 
+
+//enable cross origin
+app.use(cors());
+
+
+// Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+//sets up app to use body parser
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+
+
+app.use(session({
+  secret: 'secret',
+  saveUninitialized:true,
+  resave: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Global variables
+app.use(function(req, res, next) {
+  console.log(req.user)
+  res.locals.user = req.user || null;
+  next();
+});
+
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-app.use(routes);
 
-// // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
 
-// Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+// Routes
+// =============================================================
+require("./controllers/eatHomeController.js")(app);
+require("./controllers/userAuth.js")(app);
+
+
+// Requiring our models for syncing
+const db = require("./models");
+
+
+db.sequelize.sync({ force: true }).then(()=> {
+  app.listen(PORT, ()=> {
+    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  });
 });

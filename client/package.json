@@ -1,7 +1,6 @@
 {
   "name": "eathome",
   "version": "0.1.0",
-  "description": "Mern Demo",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
@@ -14,8 +13,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",

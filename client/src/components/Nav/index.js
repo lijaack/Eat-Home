@@ -9,7 +9,7 @@ function Nav() {
       <a className="navbar-brand" href="/search">
         Foodie
       </a>
-      <a className="navbar-brand" href="/saved">
+      <a className="navbar-brand" href="/vendor">
         Vendor
       </a>
      

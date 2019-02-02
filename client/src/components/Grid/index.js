@@ -26,4 +26,3 @@ export function Col({ size, children }) {
     </div>
   );
 }
-

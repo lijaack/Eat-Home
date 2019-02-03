@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import BusinessProfile from "./pages/BusinessProfile";
-import CreateVendorProfile from "./pages/CreateVendorProfile"
+import CreateVendorProfile from "./pages/newVendor/CreateVendorProfile"
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Home from './pages/home/home';
@@ -18,11 +18,11 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/vendor" component={CreateVendorProfile} />
+          <Route exact path="/newvendor" component={CreateVendorProfile} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/landing" component={LandingMiddle}/>
-          {/* <Route component={NoMatch} /> */}
+          <Route component={Home} />
         </Switch>
       </div>
     </Router>

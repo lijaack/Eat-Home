@@ -23,18 +23,18 @@ class Home extends Component {
     
                 <Container>
                     <Row>
-                        <Col size="md-4">
+                        <Col size="4">
                             <img src={require('./images/order.png')} alt="order" style={{width:"100px"}}></img>
                             <h5>Order your meal</h5>
                             <p>Find a meal that you like, and place your order!</p>
                         </Col>
-                        <Col size="md-4">
+                        <Col size="4">
                             <img src={require('./images/cook.png')} alt="cook" style={{width:"100px"}}></img>
                             <h5>Wait for your meal to be cooked</h5>
                             <p>A chef will prepare your home cooked meal.</p>
 
                         </Col>
-                        <Col size="md-4">
+                        <Col size="4">
                             <img src={require('./images/pickup.png')} alt="pick up" style={{width:"100px"}}></img>
                             <h5>Pick up your order!</h5>
                             <p>When the chef is done, you will get a message letting you know. Simply go and pick up your order.</p>
@@ -42,18 +42,20 @@ class Home extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col size="md-5"/>
-                        <Col size="md-2">                    
+                        <Col size="4"/>
+                        <Col size="4">  
+                        <div className="text-center">                  
                             <button type="button" className="btn btn-success">Search for a meal</button>
+                        </div>
                         </Col>
-                        <Col size="md-5"/>
+                        <Col size="4"/>
                     </Row>
                     <h2 className="text-center">Popular Meals</h2>
                     <Row>
                         
                     </Row>
 
-
+            
 
 
                 </Container>                

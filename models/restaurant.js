@@ -12,10 +12,6 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             defaultValue: "Personal"
         },
-        reviews: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        },
         description: {
             type: DataTypes.TEXT,
             allowNull: false,
@@ -23,11 +19,7 @@ module.exports = function(sequelize, DataTypes) {
         address: {
             type: DataTypes.TEXT,
             allowNull: false,
-        },
-        lincense_number: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        },
+        }
     });
 
 

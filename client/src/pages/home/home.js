@@ -18,7 +18,7 @@ class Home extends Component {
                 <div className="jumbotron jumboimg text-center" > 
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
-                    <button className="btn btn-submit">Sign up</button>
+                    <button type="button" className="btn btn-success">Sign up</button>
                 </div>
     
                 <Container>
@@ -44,7 +44,7 @@ class Home extends Component {
                     <Row>
                         <Col size="md-5"/>
                         <Col size="md-2">                    
-                            <button className="btn btn-submit">Search for a meal</button>
+                            <button type="button" className="btn btn-success">Search for a meal</button>
                         </Col>
                         <Col size="md-5"/>
                     </Row>

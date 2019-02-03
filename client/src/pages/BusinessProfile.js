@@ -21,9 +21,9 @@ render() {
     };
 
     return (
-    <Container fluid>
+        <div>
         <Jumbotron height="100"> 
-        <h1> Business Name</h1>
+            <h1> Business Name</h1>
         </Jumbotron>
         <Jumbotron height= "500">
          
@@ -33,8 +33,9 @@ render() {
                 <Images source = "https://i.pinimg.com/originals/0a/d9/be/0ad9be2e14017412035d71d571dffde5.jpg"> </Images>
                 <Images source = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNqP1oYWAkbc2GY_KZL12DuFwQ3RNxck4zsdGRnbUVl4lx1dZ7"> </Images>
              </Slider>
-                </Col>
+            </Col>
         </Jumbotron>
+        
         <Row>
            <Col size = "md-6">
            <Jumbotron height = "500"> 
@@ -54,7 +55,7 @@ render() {
            </Jumbotron>
            </Col>
         </Row>
-    </Container>
+        </div>
     )}
 }
 

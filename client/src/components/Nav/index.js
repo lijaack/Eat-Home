@@ -9,6 +9,7 @@ function Nav() {
       </button>
       <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
       <div className="navbar-nav ml-auto">
+        <a className="nav-item nav-link" href="/newvendor">Create Store</a>
         <a className="nav-item nav-link" href="/login">Login</a>
         <a className="nav-item nav-link" href="/signup">Sign Up</a>
         </div>

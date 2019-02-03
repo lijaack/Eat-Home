@@ -17,6 +17,13 @@ export default {
   signUp: function(newuser) {
     console.log("hello")
     return axios.post("/signup", newuser, function() {
-  })
+  
+    })
+  },
+  createVendor: vendor => {
+    return axios.post("/newVendor", vendor, ()=>{
+      
+    })
   }
+
 };

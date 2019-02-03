@@ -6,7 +6,8 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 class Signup extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    name: ""
   };
 
   handleInputChange = event => {
@@ -18,6 +19,16 @@ class Signup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    
+    if (this.state.username && this.state.password && this.state.name) {
+      API.signUp({
+          username: this.state.username,
+          password: this.state.password,
+          name: this.state.name
+      })
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
+    }
   };
 
   render() {
@@ -36,13 +47,21 @@ class Signup extends Component {
                         name="username"
                         placeholder="Username"
                     />
-                     <label for="password">Password:</label>
+                    <label for="password">Password:</label>
                     <Input
                         type="password"
-                        value={this.state.Password}
+                        value={this.state.password}
                         onChange={this.handleInputChange}
                         name="password"
                         placeholder="Password"
+                    />
+                    <label for="name">Name:</label>
+                    <Input
+                        type="name"
+                        value={this.state.name}
+                        onChange={this.handleInputChange}
+                        name="name"
+                        placeholder="Name"
                     />
                      <FormBtn
                         disabled={!(this.state.username && this.state.password)}

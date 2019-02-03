@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         lincense_number: {
             type: DataTypes.TEXT,
-            allowNull: false,
+             allowNull: false,
         },
     });
 

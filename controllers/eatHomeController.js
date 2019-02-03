@@ -2,16 +2,16 @@ const db = require("../models");
 
 module.exports = app => {
 
-    app.post("/signup", function(req,res){
+    app.post("/signup", (req,res) => {
         console.log("hello")
         db.User.create(
             req.body
-        ).then(function(data) {
+        ).then(data => {
             console.log("data")
         });
     }); 
 
-    app.get("/api/books",function(req,res){
+    app.get("/api/books", (req,res) =>{
         console.log("finding user location and appending local spots")
         db.Restaurant.findAll({ 
             where: { location: "IP location, please add"}
@@ -21,9 +21,4 @@ module.exports = app => {
         })
     });
         
-        
-    app.post("/api/books",function(req,res){
-        
-    })
-
 };

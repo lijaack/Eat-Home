@@ -51,7 +51,15 @@ module.exports = function(app) {
         req.logout();
         res.redirect('/');
     })
-
+    
+    app.post("/signup", (req,res) => {
+        console.log("hello")
+        db.User.create(
+            req.body
+        ).then(data => {
+            console.log("data")
+        });
+    }); 
 };
 
 

@@ -11,7 +11,7 @@ module.exports = app => {
         });
     }); 
 
-    app.get("/api/books", (req,res) =>{
+    app.get("/api/Restaurant", (req,res) =>{
         console.log("finding user location and appending local spots")
         db.Restaurant.findAll({ 
             where: { location: "IP location, please add"}

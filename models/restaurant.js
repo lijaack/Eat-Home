@@ -20,8 +20,17 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: false,
         }
+
     });
 
+    Restaurant.associate = (models) =>{
+        Restaurant.belongsTo(models.User, {
+            foreignKey:{
+                allowNull: false
+            }
+        })
+
+    }
 
     return Restaurant;  
 };

@@ -1,16 +1,12 @@
 //imports
-import Jumbotron from "../../components/Jumbotron";
 import React, { Component } from "react";
 import { Col, Row, Container} from "../../components/Grid";
 import "./style.css"
 
 //state 
 class Home extends Component {
-    state = {
-        businessName: "",
-    };
+   
 
-//render
     render() {
     
         return (
@@ -18,27 +14,32 @@ class Home extends Component {
                 <div className="jumbotron jumboimg text-center" > 
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
-                    <button type="button" className="btn btn-success">Sign up</button>
+                    <div id="sign-up"><a href="/signup" class="btn btn-success">Sign Up</a></div>
                 </div>
     
                 <Container>
                     <Row>
                         <Col size="4">
+                        <div className="text-center">
                             <img src={require('./images/order.png')} alt="order" style={{width:"100px"}}></img>
                             <h5>Order your meal</h5>
                             <p>Find a meal that you like, and place your order!</p>
+                        </div>
                         </Col>
                         <Col size="4">
+                        <div className="text-center">                  
                             <img src={require('./images/cook.png')} alt="cook" style={{width:"100px"}}></img>
                             <h5>Wait for your meal to be cooked</h5>
                             <p>A chef will prepare your home cooked meal.</p>
-
+                        </div>
                         </Col>
                         <Col size="4">
+                        <div className="text-center">                  
+
                             <img src={require('./images/pickup.png')} alt="pick up" style={{width:"100px"}}></img>
                             <h5>Pick up your order!</h5>
                             <p>When the chef is done, you will get a message letting you know. Simply go and pick up your order.</p>
-
+                        </div>
                         </Col>
                     </Row>
                     <Row>
@@ -54,9 +55,6 @@ class Home extends Component {
                     <Row>
                         
                     </Row>
-
-            
-
 
                 </Container>                
             </div>

@@ -73,7 +73,6 @@ class Home extends Component {
                         </Col>
                     </Row>
                     
-                    
                     <h2 className="text-center">Popular Meals</h2>
                     <Row>
                     {homes.map(home =>

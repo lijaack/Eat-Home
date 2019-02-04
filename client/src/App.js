@@ -6,7 +6,7 @@ import CreateVendorProfile from "./pages/newVendor/CreateVendorProfile"
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Home from './pages/home/home';
-import Nav from './components/Nav'
+import { NavUser, Nav } from './components/Nav'
 import LandingMiddle from './components/LandingMiddle'
 import API from "./utils/API";
 
@@ -25,11 +25,12 @@ class App extends Component {
 
 
   render(){
+    //checks if user is logged in
     if(this.state.login){
       return(
         <Router>
           <div>
-            <Nav />
+            <NavUser />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/newvendor" component={CreateVendorProfile} />
@@ -42,6 +43,8 @@ class App extends Component {
         </Router>
       )
     }
+
+    //route access restricted to the following routes if user is not logged in
     return(
       <Router>
         <div>

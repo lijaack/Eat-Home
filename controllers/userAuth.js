@@ -58,7 +58,7 @@ module.exports = function(app) {
         db.User.create(
             req.body
         ).then(data => {
-            console.log("data")
+            res.json('/')
         });
     }); 
 };

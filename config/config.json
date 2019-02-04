@@ -1,26 +1,27 @@
 {
     "development": {
-      "username": "root",
-      "password": "password",
-      "database": "eathome_database",
-      "host": "127.0.0.1",
-      "port": 3306,
-      "dialect": "mysql"
+        "username": "root",
+        "password": "password",
+        "database": "eathome_database",
+        "host": "127.0.0.1",
+        "port": 3306,
+        "dialect": "mysql",
+        "timestamps": false
     },
     "test": {
-      "username": "root",
-      "password": null,
-      "database": "database_test",
-      "host": "127.0.0.1",
-      "port": 3306,
-      "dialect": "mysql"
+        "username": "root",
+        "password": null,
+        "database": "database_test",
+        "host": "127.0.0.1",
+        "port": 3306,
+        "dialect": "mysql"
     },
     "production": {
-      "username": "",
-      "password": "",
-      "database": "",
-      "host": "",
-      "port": 3306,
-      "dialect": "mysql"
+        "username": "",
+        "password": "",
+        "database": "",
+        "host": "",
+        "port": 3306,
+        "dialect": "mysql"
     }
-  }
+}

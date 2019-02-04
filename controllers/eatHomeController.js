@@ -12,12 +12,12 @@ module.exports = app => {
 
     app.get("/api/Restaurant", (req,res) =>{
         console.log("finding user location and appending local spots")
-        db.Restaurant.find({ 
-//             where: { id: [1,2,3] } 
+        db.Restaurant.findAll({ 
+             where: { id: [1,2,3] } 
 //            where: { location:  }
         }).then(restaurants => {
             console.log("returning restaurants")
-            console.log(restaurants);
+            console.log(restaurants[0].photos);
         })
     });
 

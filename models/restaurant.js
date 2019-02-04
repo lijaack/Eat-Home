@@ -6,11 +6,15 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             defaultValue: "Personal"
         },
+        photos:{
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
         about: {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        image: {
+        description: {
             type: DataTypes.TEXT
         },
         address: {
@@ -18,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        lincense_number: {
+        license_number: {
             type: DataTypes.TEXT,
              allowNull: false,
         },

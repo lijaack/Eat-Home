@@ -12,8 +12,8 @@ class Restaurants extends Component {
 
   componentDidMount(){
     API.getRestaurants().then(res => {
-        console.log(res)
-        this.setState({restaurants: res})
+        console.log(res.data)
+        this.setState({restaurants: res.data})
     });
   }
 
@@ -40,6 +40,7 @@ class Restaurants extends Component {
   };
 
   render() {
+      let homes = this.state.restaurants
     return (
         <div>
         <div className="jumbotron jumboimg text-center" > 
@@ -49,9 +50,12 @@ class Restaurants extends Component {
 
         <Container>
             <Row>
-                <Col size="4">
-                    <RestaurantCard/>
-                </Col>
+               
+                  {homes.map(home =>
+                    <Col size="4">
+                    <RestaurantCard id={home.id} photos={home.photos} name={home.name} description={home.description} />
+                    </Col>
+                    )}       
             </Row>
         </Container>                
     </div>

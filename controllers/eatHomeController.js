@@ -12,10 +12,12 @@ module.exports = app => {
 
     app.get("/api/restaurants", (req,res) =>{
         console.log("finding user location and appending local spots")
-        db.Restaurant.findAll(
 
+        db.Restaurant.findAll(
+//             where: { id: [1,2,3] } 
+//            where: { location:  }
         ).then(result => {
-            res.json(result)
+            console.log(res.json(result).data)
         })
     });
 

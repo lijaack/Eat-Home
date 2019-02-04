@@ -12,7 +12,8 @@ class Restaurants extends Component {
 
   componentDidMount(){
     API.getRestaurants().then(res => {
-        this.setState({restaurants: res})
+        console.log(res.data)
+        this.setState({restaurants: res.data})
     });
   }
 
@@ -27,31 +28,34 @@ class Restaurants extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     
-    if (this.state.username && this.state.password && this.state.name) {
-      API.signUp({
-          username: this.state.username,
-          password: this.state.password,
-          name: this.state.name
-      })
-          .then(res => console.log(res))
-          .catch(err => console.log(err));
-    }
+    // if (this.state.username && this.state.password && this.state.name) {
+    //   API.signUp({
+    //       username: this.state.username,
+    //       password: this.state.password,
+    //       name: this.state.name
+    //   })
+    //       .then(res => console.log(res))
+    //       .catch(err => console.log(err));
+    // }
   };
 
   render() {
+      let homes = this.state.restaurants
     return (
         <div>
         <div className="jumbotron jumboimg text-center" > 
-            <h1 className="text-light"> Eat Home</h1>
+            <h1 className="text-light"> Choose a Location</h1>
             <br></br>
-            <div id="sign-up"><a href="/signup" class="btn btn-success">Sign Up</a></div>
         </div>
 
         <Container>
             <Row>
-                <Col size="4">
-                    <RestaurantCard/>
-                </Col>
+               
+                  {homes.map(home =>
+                    <Col size="4">
+                    <RestaurantCard id={home.id} photos={home.photos} name={home.name} description={home.description} />
+                    </Col>
+                    )}       
             </Row>
         </Container>                
     </div>

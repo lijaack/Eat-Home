@@ -9,7 +9,7 @@ import Home from './pages/home/home';
 import {NavUser, Nav} from './components/Nav'
 import LandingMiddle from './components/LandingMiddle'
 import API from "./utils/API";
-
+import Restaurants from './pages/restaurants/restaurants'
 
 
 class App extends Component {
@@ -37,6 +37,7 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/landing" component={LandingMiddle}/>
+              <Route exact path="/restaurants" component={Restaurants}/>
               <Route component={Home}/>
             </Switch>
           </div>
@@ -51,6 +52,7 @@ class App extends Component {
           <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/restaurants" component={Restaurants}/>
             {/* <Route exact path="/newvendor" component={CreateVendorProfile} /> */}
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />

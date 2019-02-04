@@ -11,17 +11,20 @@ export default {
     return axios.post("/login", data)
   },
   // creates a new user
-  signUp: function(newuser) {
+  signUp: (newuser) =>{
     console.log("hello")
     return axios.post("/signup", newuser)
   },
-  signOut: function(){
+  signOut: ()=>{
     console.log("signing out")
     return axios.get("/signout")
   },
   //creates a new vendor
   createVendor: vendor => {
     return axios.post("/newVendor", vendor)
+  },
+  getRestaurants:()=>{
+    return axios.get("/api/Restaurant")
   }
 
 };

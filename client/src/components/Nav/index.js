@@ -10,6 +10,7 @@ export function NavUser() {
       </button>
       <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
       <div className="navbar-nav ml-auto">
+        <a className="nav-item nav-link" href="/restaurants">Restaurants</a>
         <a className="nav-item nav-link" href="/newvendor">Create Store</a>
         <a className="nav-item nav-link" href="/signout" onClick={() => {API.signOut(); window.location.href = "/"}}>Sign out</a>
         </div>
@@ -28,6 +29,7 @@ export function Nav() {
       </button>
       <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
       <div className="navbar-nav ml-auto">
+        <a className="nav-item nav-link" href="/restaurants">Restaurants</a>
         <a className="nav-item nav-link" href="/login">Login</a>
         <a className="nav-item nav-link" href="/signup">Sign Up</a>
         </div>

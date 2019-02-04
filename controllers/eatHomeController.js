@@ -6,7 +6,6 @@ module.exports = app => {
             console.log(req.user)
             res.json(req.user);
         } else{
-            console.log("user false")
             res.json(false);
         };
     })

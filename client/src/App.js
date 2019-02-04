@@ -8,25 +8,57 @@ import Signup from './pages/signup';
 import Home from './pages/home/home';
 import Nav from './components/Nav'
 import LandingMiddle from './components/LandingMiddle'
+import API from "./utils/API";
 
 
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/newvendor" component={CreateVendorProfile} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/landing" component={LandingMiddle}/>
-          <Route component={Home} />
-        </Switch>
-      </div>
-    </Router>
-  );
+class App extends Component {
+  state={
+    login: false
+  }
+  componentDidMount(){
+    API.getUser().then(res => {
+      this.setState({login: res.data})
+    });
+
+  }
+
+
+  render(){
+    if(this.state.login){
+      return(
+        <Router>
+          <div>
+            <Nav />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/newvendor" component={CreateVendorProfile} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/landing" component={LandingMiddle}/>
+              <Route component={Home} />
+            </Switch>
+          </div>
+        </Router>
+      )
+    }
+    return(
+      <Router>
+        <div>
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            {/* <Route exact path="/newvendor" component={CreateVendorProfile} /> */}
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            {/* <Route exact path="/landing" component={LandingMiddle}/> */}
+            <Route component={Home} />
+          </Switch>
+        </div>
+      </Router>
+    )
+  }
+      
 }
 
 export default App;

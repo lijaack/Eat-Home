@@ -13,6 +13,11 @@ module.exports = function(sequelize, DataTypes) {
     }
     );
 
+    User.associate = (models) =>{
+      User.hasOne(models.Restaurant, {
+      })
+
+  }
 
     User.prototype.validPassword = function(password) {
         return ( this.password === password );

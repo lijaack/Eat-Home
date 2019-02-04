@@ -1,29 +1,33 @@
 const db = require("../models");
 
 module.exports = app => {
+    app.get("/account", (req,res)=>{
+        if(req.user){
+            console.log(req.user)
+            res.json(req.user);
+        } else{
+            res.json(false);
+        };
+    })
 
-    app.post("/signup", function(req,res){
-        console.log("hello")
-        db.User.create(
-            req.body
-        ).then(function(data) {
-            console.log("data")
-        });
-    }); 
-
-    app.get("/api/books",function(req,res){
+    app.get("/api/Restaurant", (req,res) =>{
         console.log("finding user location and appending local spots")
         db.Restaurant.findAll({ 
             where: { location: "IP location, please add"}
         }).then(restaurants => {
             //return restaurants local to the area
-
+            
         })
     });
-        
-        
-    app.post("/api/books",function(req,res){
-        
+
+    app.post("/newVendor", (req,res) => {
+        db.Restaurant.create(
+            req.body
+        ).then(
+
+        )
     })
 
+   
+        
 };

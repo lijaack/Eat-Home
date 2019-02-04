@@ -2,19 +2,29 @@
 import React, { Component } from "react";
 import { Col, Row, Container} from "../../components/Grid";
 import "./style.css"
+import API from "../../utils/API";
 
 //state 
 class Home extends Component {
-   
+    state={
+        login: false
+    }
 
-    render() {
+    componentDidMount(){
+        API.getUser().then(res => {
+          this.setState({login: res.data});
+        });
     
+    }
+    
+    render() {
+
         return (
             <div>
                 <div className="jumbotron jumboimg text-center" > 
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
-                    <div id="sign-up"><a href="/signup" class="btn btn-success">Sign Up</a></div>
+                    {!this.state.login ? <div id="sign-up"><a href="/signup" class="btn btn-success">Sign Up</a></div>:""}
                 </div>
     
                 <Container>

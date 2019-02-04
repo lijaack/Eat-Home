@@ -18,7 +18,7 @@ class App extends Component {
   }
   componentDidMount(){
     API.getUser().then(res => {
-      this.setState({login: res.data})
+      this.setState({login: res.data});
     });
 
   }

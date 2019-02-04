@@ -2,12 +2,14 @@
 import React, { Component } from "react";
 import { Col, Row, Container} from "../../components/Grid";
 import "./style.css"
+import RestaurantCard from "../../components/RestaurantCard";
 import API from "../../utils/API";
 
 //state 
 class Home extends Component {
     state={
-        login: false
+        login: false,
+        restaurants: []
     }
 
     componentDidMount(){
@@ -16,7 +18,7 @@ class Home extends Component {
         });
         
         API.getRestaurants().then(res =>{
-            console.log(res.data);
+            this.setState({restaurants: res.data});
         });
     
     }
@@ -24,13 +26,25 @@ class Home extends Component {
 
     
     render() {
-
+   let homes = this.state.restaurants
         return (
             <div>
                 <div className="jumbotron jumboimg text-center" > 
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
                     {!this.state.login ? <div id="sign-up"><a href="/signup" class="btn btn-success">Sign Up</a></div>:""}
+            <Row>
+                        <Col size="4"/>
+                        <Col size="4">  
+                        <div className="text-center">
+                        <form className="searchLocation">
+                            <input type="location" name="location"></input>
+                            <button type="button" className="btn btn-success searchBtn">Search for a meal</button>
+                        </form>
+                        </div>
+                        </Col>
+                        <Col size="4"/>
+            </Row>
                 </div>
     
                 <Container>
@@ -58,17 +72,16 @@ class Home extends Component {
                         </div>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col size="4"/>
-                        <Col size="4">  
-                        <div className="text-center">                  
-                            <button type="button" className="btn btn-success">Search for a meal</button>
-                        </div>
-                        </Col>
-                        <Col size="4"/>
-                    </Row>
+                    
+                    
                     <h2 className="text-center">Popular Meals</h2>
                     <Row>
+                    {homes.map(home =>
+                    <Col size="4">
+                    <RestaurantCard id={home.id} photos={home.photos} name={home.name} description={home.description} />
+                    </Col>
+                    )}    
+                
                         
                     </Row>
 

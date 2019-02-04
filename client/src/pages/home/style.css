@@ -7,3 +7,10 @@
     background-position: center bottom;
     height:500px;
 }
+
+.searchLocation{
+    margin-top: 100px;
+}
+.searchBtn{
+    margin: 10px;
+}

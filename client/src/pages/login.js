@@ -9,6 +9,9 @@ class Login extends Component {
     password: ""
   };
 
+  componentDidMount(){
+    API.getUser().then(res => console.log(res));
+  }
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -18,6 +21,12 @@ class Login extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log(this.state.username)
+    API.login({
+      username: this.state.username,
+      password: this.state.password
+    }).then(
+    )
   };
 
   render() {

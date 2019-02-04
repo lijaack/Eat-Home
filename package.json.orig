@@ -1,0 +1,49 @@
+{
+  "name": "eathome",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "bootstrap": "^4.2.1",
+    "cors": "^2.8.5",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.3.16",
+    "mysql2": "^1.6.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "react": "^16.7.0",
+<<<<<<< HEAD
+    "react-bootstrap": "^1.0.0-beta.5",
+=======
+>>>>>>> ec2374b01cb58b05a2dd314ee24dd344ca99dcd6
+    "react-dom": "^16.7.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-slick": "^0.23.2",
+<<<<<<< HEAD
+=======
+    "reactstrap": "^7.1.0",
+>>>>>>> ec2374b01cb58b05a2dd314ee24dd344ca99dcd6
+    "sequelize": "^4.42.0"
+  }
+}

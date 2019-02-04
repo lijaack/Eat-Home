@@ -26,6 +26,7 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
     }).then(
+      window.location.href = "/"
     )
   };
 

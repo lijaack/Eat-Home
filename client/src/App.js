@@ -6,7 +6,7 @@ import CreateVendorProfile from "./pages/newVendor/CreateVendorProfile"
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Home from './pages/home/home';
-import { NavUser, Nav } from './components/Nav'
+import {NavUser, Nav} from './components/Nav'
 import LandingMiddle from './components/LandingMiddle'
 import API from "./utils/API";
 
@@ -30,14 +30,14 @@ class App extends Component {
       return(
         <Router>
           <div>
-            <NavUser />
+            <NavUser/>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/newvendor" component={CreateVendorProfile} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/landing" component={LandingMiddle}/>
-              <Route component={Home} />
+              <Route component={Home}/>
             </Switch>
           </div>
         </Router>

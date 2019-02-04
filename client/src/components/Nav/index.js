@@ -1,4 +1,5 @@
 import React from "react";
+import API from "../../utils/API";
 
 export function NavUser() {
   return (
@@ -10,11 +11,11 @@ export function NavUser() {
       <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
       <div className="navbar-nav ml-auto">
         <a className="nav-item nav-link" href="/newvendor">Create Store</a>
-        <a className="nav-item nav-link" href="/signout">Sign out</a>
+        <a className="nav-item nav-link" href="/signout" onClick={() => {API.signOut(); window.location.href = "/"}}>Sign out</a>
         </div>
       </div>
 	  </nav>
-
+  
   );
 }
 

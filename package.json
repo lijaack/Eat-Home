@@ -32,18 +32,12 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "react": "^16.7.0",
-<<<<<<< HEAD
     "react-bootstrap": "^1.0.0-beta.5",
-=======
->>>>>>> ec2374b01cb58b05a2dd314ee24dd344ca99dcd6
     "react-dom": "^16.7.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-slick": "^0.23.2",
-<<<<<<< HEAD
-=======
     "reactstrap": "^7.1.0",
->>>>>>> ec2374b01cb58b05a2dd314ee24dd344ca99dcd6
     "sequelize": "^4.42.0"
   }
 }

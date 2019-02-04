@@ -14,11 +14,18 @@ import "./style.css";
 class Profile extends Component {
 
     state = {
+        user:[],
         restaurantName: "",
         about: "",
-        image: ""
+        image: "",
+        address:""
     };
-
+    componentDidMount(){
+        API.getUser().then(res => {
+          this.setState({user: res.data});
+        });
+    
+      }
     handleInputChange = event => {
         const { name, value } = event.target;
 
@@ -29,23 +36,26 @@ class Profile extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-    
-        if (this.state.restaurantName && this.state.about && this.state.image) {
+        if (this.state.restaurantName && this.state.about && this.state.image && this.state.address) {
         API.createVendor({
             name: this.state.restaurantName,
             about: this.state.about,
-            image: this.state.image
+            address: this.state.address,
+            image: this.state.image,
+            UserId: this.state.user.id
         })
-            .then(res => console.log(res))
+            .then(res =>{
+                this.setState({
+                businessName: "",
+                about: "",
+                image: ""
+                })
+            })
             .catch(err => console.log(err));
         }
 
         //Empty the text fields
-        this.setState({
-            businessName: "",
-            about: "",
-            photo: ""
-        });
+        
     }
 
     render() {
@@ -72,6 +82,15 @@ class Profile extends Component {
                         type="text area"
                         rows="4"
                         placeholder="About"
+                    />
+                     <label for="address">Address:</label>
+                    <Input
+                        value={this.state.address}
+                        name="address"
+                        onChange={this.handleInputChange}
+                        type="text area"
+                        rows="4"
+                        placeholder="Address"
                     />
                     <label for="image">Image:</label>
                     <Input

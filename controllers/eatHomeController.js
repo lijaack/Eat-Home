@@ -10,21 +10,20 @@ module.exports = app => {
         };
     })
 
-    app.get("/api/Restaurant", (req,res) =>{
+    app.get("/api/restaurants", (req,res) =>{
         console.log("finding user location and appending local spots")
-        db.Restaurant.findAll({ 
-            where: { location: "IP location, please add"}
-        }).then(restaurants => {
-            //return restaurants local to the area
-            
+        db.Restaurant.findAll(
+
+        ).then(result => {
+            res.json(result)
         })
     });
 
-    app.post("/newVendor", (req,res) => {
+    app.post("/newvendor", (req,res) => {
         db.Restaurant.create(
             req.body
         ).then(
-
+            console.log("vendor created")
         )
     })
 

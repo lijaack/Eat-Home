@@ -5,8 +5,11 @@ var LocalStrategy = require('passport-local').Strategy;
 module.exports = function(app) {
 
     passport.use(new LocalStrategy(
-        function( username, password, done) {
+        function( username, password, done) {            
             db.User.findOne({ where:{ username: username}}).then(function(user){  
+                console.log(username);
+
+
                 if (!user) {
                     console.log("Incorrect username")
                     return done(null, false, { message: 'Incorrect username.' });
@@ -28,10 +31,7 @@ module.exports = function(app) {
       passport.deserializeUser(function(id, done) {
         console.log("deserializeUser");
         db.User.findOne({
-            where: {id: id},
-                include: [{
-                    model: db.Event
-                }]
+            where: {id: id}
         }).then(function(user){
             done(null, user);
         })
@@ -39,8 +39,9 @@ module.exports = function(app) {
 
     app.post('/login',  passport.authenticate('local'),
         function(req, res) {
+
             req.logIn(res.user, function (err) {
-             res.json('/dashboard');
+                res.json('/dashboard');
             })
         }
     );
@@ -51,7 +52,15 @@ module.exports = function(app) {
         req.logout();
         res.redirect('/');
     })
-
+    
+    app.post("/signup", (req,res) => {
+        console.log("hello")
+        db.User.create(
+            req.body
+        ).then(data => {
+            console.log("data")
+        });
+    }); 
 };
 
 

@@ -1,0 +1,9 @@
+.jumboimg{
+    background: url(./images/landing.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:100%;
+    height:auto;
+    background-position: center bottom;
+    height:500px;
+}

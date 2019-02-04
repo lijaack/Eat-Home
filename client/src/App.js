@@ -6,6 +6,7 @@ import Signup from './pages/signup';
 import Test from './pages/test';
 import Nav from './components/Nav'
 import LandingMiddle from './components/LandingMiddle'
+import LandingAlt from './components/LandingAlt'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Switch>
           {/* <Route exact path="/" component={Test} /> */}
           <Route exact path="/" component={LandingMiddle}/>
+          <Route exact path="/landingalt" component={LandingAlt}/>
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           {/* <Route exact path="/landing" component={LandingMiddle}/> */}

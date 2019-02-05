@@ -14,6 +14,7 @@ import MyRestaurant from "./pages/myRestaurant"
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Home from './pages/home/home';
+import axios from 'axios';
 
 
 class App extends Component {

@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import BusinessProfile from "./pages/BusinessProfile";
@@ -6,10 +5,12 @@ import CreateVendorProfile from "./pages/newVendor/CreateVendorProfile"
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Home from './pages/home/home';
-import {NavUser, Nav} from './components/Nav'
-import LandingMiddle from './components/LandingMiddle'
+import {NavUser, Nav} from './components/Nav';
+import LandingMiddle from './components/LandingMiddle';
 import API from "./utils/API";
-import Restaurants from './pages/restaurants/restaurants'
+import Restaurants from './pages/restaurants/restaurants';
+import CreateMenu from './components/CreateMenu';
+
 
 
 class App extends Component {
@@ -34,6 +35,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/newvendor" component={CreateVendorProfile} />
+              <Route exact path="/createmenu" component={CreateMenu}/>
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/landing" component={LandingMiddle}/>
@@ -53,6 +55,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/restaurants" component={Restaurants}/>
+            <Route exact path="/createmenu" component={CreateMenu}/>
             {/* <Route exact path="/newvendor" component={CreateVendorProfile} /> */}
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />

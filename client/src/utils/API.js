@@ -24,6 +24,12 @@ export default {
   },
   getRestaurants:()=>{
     return axios.get("/api/restaurants")
+  },
+  getRestaurant:(id)=>{
+    return axios.get("/api/restaurant", id)
+  },
+  getRestaurantsCity:(city)=>{
+    return axios.get("/api/restaurants/city",city)
   }
 
 };

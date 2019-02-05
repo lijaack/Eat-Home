@@ -31,7 +31,10 @@ module.exports = function(app) {
       passport.deserializeUser(function(id, done) {
         console.log("deserializeUser");
         db.User.findOne({
-            where: {id: id}
+            where: {id: id},
+            include: [{
+                model: db.Restaurant
+            }]
         }).then(function(user){
             done(null, user);
         })

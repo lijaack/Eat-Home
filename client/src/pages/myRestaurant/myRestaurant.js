@@ -22,10 +22,11 @@ class Profile extends Component {
     };
     componentDidMount(){
         API.getUser().then(res => {
+            console.log(res.data)
           this.setState({user: res.data});
         });
     
-      }
+    }
     handleInputChange = event => {
         const { name, value } = event.target;
 

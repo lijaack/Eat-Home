@@ -10,7 +10,7 @@ import Restaurants from './pages/restaurants/restaurants';
 import Restaurant from './pages/restaurant/restaurant';
 import CreateMenu from './pages/CreateMenu/CreateMenu';
 import BusinessProfile from "./pages/BusinessProfile";
-import CreateVendorProfile from "./pages/newVendor/CreateVendorProfile"
+import CreateVendorProfile from "./pages/myRestaurant/myRestaurant"
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Home from './pages/home/home';
@@ -30,50 +30,28 @@ class App extends Component {
 
   render(){
     //checks if user is logged in
-    if(this.state.login){
+    let login=this.state.login;
       return(
         <div>
-        <NavUser/>
+        {login ? <NavUser/>: <Nav/>}
         <Router>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/newvendor" component={CreateVendorProfile} />
-              <Route exact path="/createmenu" component={CreateMenu}/>
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
+              {login ? <Route exact path="/newvendor" component={CreateVendorProfile} />: ""}
+              {login ? <Route exact path="/createmenu" component={CreateMenu}/>: ""}
+              {login ? "": <Route exact path="/login" component={Login} />}
+              {login ? "": <Route exact path="/signup" component={Signup} />}
               <Route exact path="/landing" component={LandingMiddle}/>
               <Route exact path="/restaurants" component={Restaurants}/>
-              <Route path="/restaurant/:restaurant" component = {Restaurant}/>
+              <Route exact path="/restaurant/:id" component = {Restaurant}/>
               <Route component={Home} />
             </Switch>
         </Router>
         </div>
 
       )
-    }
 
-    //route access restricted to the following routes if user is not logged in
-    else {
-      return(
-      <div>
-      <Nav/>
-      <Router>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/restaurants" component={Restaurants}/>
-            <Route exact path="/createmenu" component={CreateMenu}/>
-            {/* <Route exact path="/newvendor" component={CreateVendorProfile} /> */}
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            {/* <Route exact path="/landing" component={LandingMiddle}/> */}
-            <Route component={Home} />
-          </Switch>
-      </Router>
-    </div>
-
-    )
   }
-}
 }
 
 export default App;

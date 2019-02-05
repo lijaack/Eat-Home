@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             defaultValue: "Personal"
         },
-        photos:{
+        image:{
             type: DataTypes.TEXT,
             allowNull: false,
         },
@@ -14,19 +14,11 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        description: {
-            type: DataTypes.TEXT
-        },
         address: {
 
             type: DataTypes.TEXT,
             allowNull: false,
-        },
-        license_number: {
-            type: DataTypes.TEXT,
-             allowNull: false,
-        },
-
+        }
     });
 
     Restaurant.associate = (models) =>{
@@ -34,6 +26,8 @@ module.exports = function(sequelize, DataTypes) {
             foreignKey:{
                 allowNull: false
             }
+        })
+        Restaurant.hasMany(models.Food, {
         })
     }
 

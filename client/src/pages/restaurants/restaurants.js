@@ -7,7 +7,8 @@ import "./style.css"
 
 class Restaurants extends Component {
   state = {
-      restaurants:[]
+      restaurants:[],
+      location: ""
   };
 
   componentDidMount(){
@@ -24,38 +25,45 @@ class Restaurants extends Component {
       [name]: value
     });
   };
-
+  visitPage(event){
+    console.log(event.target.dataset.id)
+    window.location.href = "/restaurant/" + event.target.dataset.id
+  }
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log("hi")
+      API.signUp({
+          username: this.state.username,
+          password: this.state.password,
+          name: this.state.name
+      })
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
     
-    // if (this.state.username && this.state.password && this.state.name) {
-    //   API.signUp({
-    //       username: this.state.username,
-    //       password: this.state.password,
-    //       name: this.state.name
-    //   })
-    //       .then(res => console.log(res))
-    //       .catch(err => console.log(err));
-    // }
   };
 
   render() {
-      let homes = this.state.restaurants
+      let restaurants = this.state.restaurants
     return (
         <div>
-        <div className="jumbotron jumboimg text-center" > 
-            <h1 className="text-light"> Choose a Location</h1>
-            <br></br>
+        <div className="jumbotron neighborhoodimg text-center" > 
+            
+            <form className="searchLocation">
+                <label for="location"><h1 className="text-light"> Choose a Location</h1></label>
+                <br/>
+                <input type="location" name="location"></input>
+                <button type="button" className="btn btn-success searchBtn" onClick={this.handleFormSubmit}>Search Location</button>
+            </form>
         </div>
 
         <Container>
             <Row>
                
-                  {homes.map(home =>
-                    <Col size="4">
-                    <RestaurantCard id={home.id} photos={home.photos} name={home.name} description={home.description} />
+                  {restaurants.map(restaurants =>
+                    <Col size="3" key={restaurants.id}>
+                    <RestaurantCard id={restaurants.id} photos={restaurants.image} name={restaurants.name} about={restaurants.about} visitPage={this.visitPage}/>
                     </Col>
-                    )}       
+                  )}       
             </Row>
         </Container>                
     </div>

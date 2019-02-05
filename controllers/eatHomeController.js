@@ -11,13 +11,24 @@ module.exports = app => {
     })
 
     app.get("/api/restaurants", (req,res) =>{
-        console.log("finding user location and appending local spots")
-
         db.Restaurant.findAll(
-//             where: { id: [1,2,3] } 
-//            where: { location:  }
         ).then(result => {
-            console.log(res.json(result).data)
+            res.json(result)
+        })
+    });
+    app.get("/api/restaurants/city", (req,res) =>{
+        db.Restaurant.findAll({
+            where: req.body
+        }).then(result => {
+            res.json(result)
+        })
+    });
+    app.get("/api/restaurant", (req,res) =>{
+
+        db.Restaurant.findOne({
+            where: req.body
+        }).then(result => {
+            res.json(result)
         })
     });
 

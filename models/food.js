@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Menu = sequelize.define("Menu", {
+    var Food = sequelize.define("Food", {
         product: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -14,12 +14,19 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1]
             }
         },
-        ingredients: {
-            type: DataTypes.STRING,
-            defaultValue: "Personal"
-        },
+        image:{
+            type:DataTypes.TEXT,
+            allowNull: false
+        }
     });
 
+    Food.associate = (models) =>{
+        Food.belongsTo(models.Restaurant, {
+            foreignKey:{
+                allowNull: false
+            }
+        })
+    }
 
-    return Menu; 
+    return Food; 
 };

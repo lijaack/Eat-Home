@@ -35,6 +35,8 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         })
+        Restaurant.hasMany(models.Food, {
+        })
     }
 
     return Restaurant;  

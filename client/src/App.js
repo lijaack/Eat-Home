@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+//components
+import {NavUser, Nav} from './components/Nav';
+import LandingMiddle from './components/LandingMiddle';
+//utils
+import API from "./utils/API";
+//pages
+import Restaurants from './pages/restaurants/restaurants';
+import CreateMenu from './pages/CreateMenu/CreateMenu';
 import BusinessProfile from "./pages/BusinessProfile";
 import CreateVendorProfile from "./pages/newVendor/CreateVendorProfile"
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Home from './pages/home/home';
-import {NavUser, Nav} from './components/Nav';
-import LandingMiddle from './components/LandingMiddle';
-import API from "./utils/API";
-import Restaurants from './pages/restaurants/restaurants';
-import CreateMenu from './components/CreateMenu';
-
 
 
 class App extends Component {
@@ -29,9 +31,9 @@ class App extends Component {
     //checks if user is logged in
     if(this.state.login){
       return(
+        <div>
+        <NavUser/>
         <Router>
-          <div>
-            <NavUser/>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/newvendor" component={CreateVendorProfile} />
@@ -42,16 +44,18 @@ class App extends Component {
               <Route exact path="/restaurants" component={Restaurants}/>
               <Route component={Home}/>
             </Switch>
-          </div>
         </Router>
+        </div>
+
       )
     }
 
     //route access restricted to the following routes if user is not logged in
-    return(
+    else {
+      return(
+      <div>
+      <Nav/>
       <Router>
-        <div>
-          <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/restaurants" component={Restaurants}/>
@@ -62,11 +66,12 @@ class App extends Component {
             {/* <Route exact path="/landing" component={LandingMiddle}/> */}
             <Route component={Home} />
           </Switch>
-        </div>
       </Router>
+    </div>
+
     )
   }
-      
+}
 }
 
 export default App;

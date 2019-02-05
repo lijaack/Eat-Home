@@ -10,6 +10,7 @@ import LandingMiddle from './components/LandingMiddle';
 import API from "./utils/API";
 import Restaurants from './pages/restaurants/restaurants';
 import CreateMenu from './components/CreateMenu';
+import CreateMenuTwo from './components/CreateMenuTwo';
 
 
 

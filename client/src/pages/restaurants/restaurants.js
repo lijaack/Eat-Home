@@ -7,12 +7,14 @@ import "./style.css"
 
 class Restaurants extends Component {
   state = {
-      restaurants:[]
+      restaurants:[],
+      location: ""
   };
 
   componentDidMount(){
     API.getRestaurants().then(res => {
-        this.setState({restaurants: res})
+        console.log(res.data)
+        this.setState({restaurants: res.data})
     });
   }
 
@@ -23,11 +25,13 @@ class Restaurants extends Component {
       [name]: value
     });
   };
-
+  visitPage(event){
+    console.log(event.target.dataset.id)
+    window.location.href = "/restaurant/" + event.target.dataset.id
+  }
   handleFormSubmit = event => {
     event.preventDefault();
-    
-    if (this.state.username && this.state.password && this.state.name) {
+    console.log("hi")
       API.signUp({
           username: this.state.username,
           password: this.state.password,
@@ -35,23 +39,31 @@ class Restaurants extends Component {
       })
           .then(res => console.log(res))
           .catch(err => console.log(err));
-    }
+    
   };
 
   render() {
+      let restaurants = this.state.restaurants
     return (
         <div>
-        <div className="jumbotron jumboimg text-center" > 
-            <h1 className="text-light"> Eat Home</h1>
-            <br></br>
-            <div id="sign-up"><a href="/signup" class="btn btn-success">Sign Up</a></div>
+        <div className="jumbotron neighborhoodimg text-center" > 
+            
+            <form className="searchLocation">
+                <label for="location"><h1 className="text-light"> Choose a Location</h1></label>
+                <br/>
+                <input type="location" name="location"></input>
+                <button type="button" className="btn btn-success searchBtn" onClick={this.handleFormSubmit}>Search Location</button>
+            </form>
         </div>
 
         <Container>
             <Row>
-                <Col size="4">
-                    <RestaurantCard/>
-                </Col>
+               
+                  {restaurants.map(restaurants =>
+                    <Col size="3" key={restaurants.id}>
+                    <RestaurantCard id={restaurants.id} photos={restaurants.image} name={restaurants.name} about={restaurants.about} visitPage={this.visitPage}/>
+                    </Col>
+                  )}       
             </Row>
         </Container>                
     </div>

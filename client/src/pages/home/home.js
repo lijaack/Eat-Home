@@ -2,12 +2,14 @@
 import React, { Component } from "react";
 import { Col, Row, Container} from "../../components/Grid";
 import "./style.css"
+import RestaurantCard from "../../components/RestaurantCard";
 import API from "../../utils/API";
 
 //state 
 class Home extends Component {
     state={
-        login: false
+        login: false,
+        restaurants: []
     }
 
     componentDidMount(){
@@ -16,21 +18,38 @@ class Home extends Component {
         });
         
         API.getRestaurants().then(res =>{
+<<<<<<< HEAD
             console.log(res.data);
         });
     
     }
 
+=======
+            this.setState({restaurants: res.data});
+        });
+    
+    }
+    visitPage(event){
+        console.log(event.target.dataset.id)
+        window.location.href = "/restaurant/" + event.target.dataset.id
+    }
+>>>>>>> dc98debfc42acfb353001d54f1922085b4ce1723
 
     
     render() {
-
+        let restaurants = this.state.restaurants
         return (
             <div>
                 <div className="jumbotron jumboimg text-center" > 
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
                     {!this.state.login ? <div id="sign-up"><a href="/signup" class="btn btn-success">Sign Up</a></div>:""}
+                    
+                        <form className="searchLocation">
+                            <input type="location" name="location"></input>
+                            <button type="button" className="btn btn-success searchBtn">Search for a meal</button>
+                        </form>
+         
                 </div>
     
                 <Container>
@@ -58,19 +77,28 @@ class Home extends Component {
                         </div>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col size="4"/>
-                        <Col size="4">  
-                        <div className="text-center">                  
-                            <button type="button" className="btn btn-success">Search for a meal</button>
-                        </div>
-                        </Col>
-                        <Col size="4"/>
-                    </Row>
+                    
                     <h2 className="text-center">Popular Meals</h2>
                     <Row>
+                    {restaurants.map(restaurants =>
+                    <Col size="3" key={restaurants.id}>
+                    <RestaurantCard id={restaurants.id} photos={restaurants.image} name={restaurants.name} about={restaurants.about} visitPage={this.visitPage}/>
+                    </Col>
+                    )}    
+                
                         
                     </Row>
+                    <h2 className="text-center">Popular Restaurants</h2>
+                    <Row>
+                    {restaurants.map(restaurants =>
+                    <Col size="3" key={restaurants.id}>
+                    <RestaurantCard id={restaurants.id} photos={restaurants.image} name={restaurants.name} about={restaurants.about} visitPage={this.visitPage}/>
+                    </Col>
+                    )}    
+                
+                        
+                    </Row>
+
 
                 </Container>                
             </div>

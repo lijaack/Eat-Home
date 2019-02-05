@@ -26,7 +26,7 @@ class Signup extends Component {
           password: this.state.password,
           name: this.state.name
       })
-          .then(res => console.log(res))
+          .then(res => window.location.href = res.data)
           .catch(err => console.log(err));
     }
   };

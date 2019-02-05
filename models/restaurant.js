@@ -6,26 +6,30 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             defaultValue: "Personal"
         },
+        image:{
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
         about: {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        image: {
-            type: DataTypes.TEXT
-        },
         address: {
-            type: DataTypes.TEXT
-        }
 
+            type: DataTypes.TEXT,
+            allowNull: false,
+        }
     });
 
-    // Restaurant.associate = (models) =>{
-    //     Restaurant.belongsTo(models.User, {
-    //         foreignKey:{
-    //             allowNull: false
-    //         }
-    //     })
-    // }
+    Restaurant.associate = (models) =>{
+        Restaurant.belongsTo(models.User, {
+            foreignKey:{
+                allowNull: false
+            }
+        })
+        Restaurant.hasMany(models.Food, {
+        })
+    }
 
     return Restaurant;  
 };

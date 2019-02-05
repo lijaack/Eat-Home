@@ -10,7 +10,7 @@ import Restaurants from './pages/restaurants/restaurants';
 import Restaurant from './pages/restaurant/restaurant';
 import CreateMenu from './pages/CreateMenu/CreateMenu';
 import BusinessProfile from "./pages/BusinessProfile";
-import CreateVendorProfile from "./pages/myRestaurant/myRestaurant"
+import MyRestaurant from "./pages/myRestaurant"
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Home from './pages/home/home';
@@ -37,7 +37,7 @@ class App extends Component {
         <Router>
             <Switch>
               <Route exact path="/" component={Home} />
-              {login ? <Route exact path="/newvendor" component={CreateVendorProfile} />: ""}
+              {login ? <Route exact path="/myrestaurant" component={MyRestaurant} />: ""}
               {login ? <Route exact path="/createmenu" component={CreateMenu}/>: ""}
               {login ? "": <Route exact path="/login" component={Login} />}
               {login ? "": <Route exact path="/signup" component={Signup} />}

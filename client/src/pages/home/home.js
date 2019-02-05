@@ -36,18 +36,12 @@ class Home extends Component {
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
                     {!this.state.login ? <div id="sign-up"><a href="/signup" class="btn btn-success">Sign Up</a></div>:""}
-            <Row>
-                        <Col size="4"/>
-                        <Col size="4">  
-                        <div className="text-center">
+                    
                         <form className="searchLocation">
                             <input type="location" name="location"></input>
                             <button type="button" className="btn btn-success searchBtn">Search for a meal</button>
                         </form>
-                        </div>
-                        </Col>
-                        <Col size="4"/>
-            </Row>
+         
                 </div>
     
                 <Container>
@@ -79,13 +73,24 @@ class Home extends Component {
                     <h2 className="text-center">Popular Meals</h2>
                     <Row>
                     {restaurants.map(restaurants =>
-                    <Col size="4" key={restaurants.id}>
+                    <Col size="3" key={restaurants.id}>
                     <RestaurantCard id={restaurants.id} photos={restaurants.image} name={restaurants.name} about={restaurants.about} visitPage={this.visitPage}/>
                     </Col>
                     )}    
                 
                         
                     </Row>
+                    <h2 className="text-center">Popular Restaurants</h2>
+                    <Row>
+                    {restaurants.map(restaurants =>
+                    <Col size="3" key={restaurants.id}>
+                    <RestaurantCard id={restaurants.id} photos={restaurants.image} name={restaurants.name} about={restaurants.about} visitPage={this.visitPage}/>
+                    </Col>
+                    )}    
+                
+                        
+                    </Row>
+
 
                 </Container>                
             </div>

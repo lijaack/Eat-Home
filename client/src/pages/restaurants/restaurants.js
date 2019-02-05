@@ -31,33 +31,36 @@ class Restaurants extends Component {
   }
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log("hi")
+      API.signUp({
+          username: this.state.username,
+          password: this.state.password,
+          name: this.state.name
+      })
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
     
-    // if (this.state.username && this.state.password && this.state.name) {
-    //   API.signUp({
-    //       username: this.state.username,
-    //       password: this.state.password,
-    //       name: this.state.name
-    //   })
-    //       .then(res => console.log(res))
-    //       .catch(err => console.log(err));
-    // }
   };
 
   render() {
       let restaurants = this.state.restaurants
     return (
         <div>
-        <div className="jumbotron jumboimg text-center" > 
-            <h1 className="text-light"> Choose a Location</h1>
-            <br></br>
-            <form type="text"></form>
+        <div className="jumbotron neighborhoodimg text-center" > 
+            
+            <form className="searchLocation">
+                <label for="location"><h1 className="text-light"> Choose a Location</h1></label>
+                <br/>
+                <input type="location" name="location"></input>
+                <button type="button" className="btn btn-success searchBtn" onClick={this.handleFormSubmit}>Search Location</button>
+            </form>
         </div>
 
         <Container>
             <Row>
                
                   {restaurants.map(restaurants =>
-                    <Col size="4" key={restaurants.id}>
+                    <Col size="3" key={restaurants.id}>
                     <RestaurantCard id={restaurants.id} photos={restaurants.image} name={restaurants.name} about={restaurants.about} visitPage={this.visitPage}/>
                     </Col>
                   )}       

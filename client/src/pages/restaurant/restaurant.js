@@ -11,7 +11,9 @@ class Restaurants extends Component {
   };
 
   componentDidMount(){
-    API.getRestaurants().then(res => {
+    API.getRestaurant({
+      id: this.props.match.params.id
+    }).then(res => {
         console.log(res.data)
         this.setState({restaurants: res.data})
     });
@@ -24,10 +26,7 @@ class Restaurants extends Component {
       [name]: value
     });
   };
-  visitPage(event){
-    console.log(event.target.dataset.id)
-    window.location.href = "/restaurant/" + event.target.dataset.id
-  }
+
   handleFormSubmit = event => {
     event.preventDefault();
     
@@ -37,10 +36,9 @@ class Restaurants extends Component {
       let restaurants = this.state.restaurants
     return (
         <div>
-        <div className="jumbotron jumboimg text-center" > 
-            <h1 className="text-light"> Choose a Location</h1>
+        <div className="jumbotron  text-center" > 
+            <h1 className=""> Menu</h1>
             <br></br>
-            <form type="text"></form>
         </div>
 
         <Container>

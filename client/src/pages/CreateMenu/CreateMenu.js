@@ -6,6 +6,9 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import { Col, Row, Container} from "../../components/Grid";
 import Images from "../../components/Images";
 import API from "../../utils/API";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 
 //Profile page shows 1 restaurant
@@ -59,52 +62,56 @@ class CreateMenu extends Component {
 
     render() {
         return (
-            <section className="vendor-section">
-                <Container>
-                    <h1>
-                        Create your restaurant
-                    </h1>
-                    <form className="form">
-                    <label for="restaurantName">Restaurant Name:</label>
-                    <Input
-                        value={this.state.restaurantName}
-                        name="restaurantName"
-                        onChange={this.handleInputChange}
-                        type="text"
-                        placeholder="Business Name"
-                    />
-                    <label for="about">About:</label>
-                    <Input
-                        value={this.state.about}
-                        name="about"
-                        onChange={this.handleInputChange}
-                        type="text area"
-                        rows="4"
-                        placeholder="About"
-                    />
-                     <label for="address">Address:</label>
-                    <Input
-                        value={this.state.address}
-                        name="address"
-                        onChange={this.handleInputChange}
-                        type="text area"
-                        rows="4"
-                        placeholder="Address"
-                    />
-                    <label for="image">Image:</label>
-                    <Input
-                        value={this.state.image}
-                        name="image"
-                        onChange={this.handleInputChange}
-                        type="text area"
-                        placeholder="Image"
-                    />
-                    </form>
-                    <button type="button" className="btn btn-success" onClick={this.handleFormSubmit}>Submit</button>
-                </Container>
-            </section>
-        )
-    }
+
+            <Form className>
+              <InputGroup className="md-3">
+         
+          <Form.Group controlId="menuItem" >
+            <Form.Label>Menu Item</Form.Label>
+            <Form.Control type="menuItem" placeholder="Enter Menu Item Name" />
+            <Form.Text className="text-muted">
+              Enter Menu Item Above
+            </Form.Text>
+          </Form.Group>
+           
+        
+          <Form.Group controlId="menuItemIngredients">
+            <Form.Label>Menu Item Ingredients</Form.Label>
+            <Form.Control type="menuItemIngredients" placeholder="Enter Menu Item Ingredient list" />
+            <Form.Text className="text-muted">
+              Enter Ingredients
+            </Form.Text>
+          </Form.Group>
+        
+          
+          <Form.Group controlId="menuItemPrice">
+            <Form.Label>Menu Item Ingredients</Form.Label>
+            <Form.Control type="menuItemPrice" placeholder="Enter Menu Item Price" />
+            <Form.Text className="text-muted">
+              Enter Ingredients
+            </Form.Text>
+          </Form.Group>
+        
+        
+          <Form.Group controlId="menuItemImg">
+            <Form.Label>Menu Item Image</Form.Label>
+            <Form.Control type="menuItemImg" placeholder="http://www.linktoimage" />
+            <Form.Text className="text-muted">
+              Enter a link to image
+            </Form.Text>
+          </Form.Group>
+        
+        
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+          </InputGroup>
+        </Form>
+          
+          );
+        }
+        
+        
 }
 
 export default CreateMenu;

@@ -14,8 +14,14 @@ class Home extends Component {
         API.getUser().then(res => {
           this.setState({login: res.data});
         });
+        
+        API.getRestaurants().then(res =>{
+            console.log(res.data);
+        });
     
     }
+
+
     
     render() {
 

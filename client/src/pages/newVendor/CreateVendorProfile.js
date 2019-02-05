@@ -44,7 +44,7 @@ class Profile extends Component {
         this.setState({
             businessName: "",
             about: "",
-            photo: ""
+            image: ""
         });
     }
 

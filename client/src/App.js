@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import BusinessProfile from "./pages/BusinessProfile";
+import RestaurantProfile from "./pages/restaurantProfile/restaurantProfile";
 import CreateVendorProfile from "./pages/newVendor/CreateVendorProfile"
 import Login from './pages/login';
 import Signup from './pages/signup';
@@ -20,7 +20,6 @@ class App extends Component {
     API.getUser().then(res => {
       this.setState({login: res.data});
     });
-
   }
 
 
@@ -52,15 +51,16 @@ class App extends Component {
           <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/profile" component={RestaurantProfile} />
             <Route exact path="/restaurants" component={Restaurants}/>
-            {/* <Route exact path="/newvendor" component={CreateVendorProfile} /> */}
+            { <Route exact path="/newvendor" component={CreateVendorProfile} /> }
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             {/* <Route exact path="/landing" component={LandingMiddle}/> */}
             <Route component={Home} />
           </Switch>
         </div>
-      </Router>
+      </Router> 
     )
   }
       

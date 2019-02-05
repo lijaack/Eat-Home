@@ -22,11 +22,14 @@ class Home extends Component {
         });
     
     }
-
+    visitPage(event){
+        console.log(event.target.dataset.id)
+        window.location.href = "/restaurant/" + event.target.dataset.id
+    }
 
     
     render() {
-   let homes = this.state.restaurants
+        let restaurants = this.state.restaurants
         return (
             <div>
                 <div className="jumbotron jumboimg text-center" > 
@@ -75,9 +78,9 @@ class Home extends Component {
                     
                     <h2 className="text-center">Popular Meals</h2>
                     <Row>
-                    {homes.map(home =>
-                    <Col size="4">
-                    <RestaurantCard id={home.id} photos={home.photos} name={home.name} description={home.description} />
+                    {restaurants.map(restaurants =>
+                    <Col size="4" key={restaurants.id}>
+                    <RestaurantCard id={restaurants.id} photos={restaurants.image} name={restaurants.name} about={restaurants.about} visitPage={this.visitPage}/>
                     </Col>
                     )}    
                 

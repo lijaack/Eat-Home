@@ -7,6 +7,7 @@ import LandingMiddle from './components/LandingMiddle';
 import API from "./utils/API";
 //pages
 import Restaurants from './pages/restaurants/restaurants';
+import Restaurant from './pages/restaurant/restaurant';
 import CreateMenu from './pages/CreateMenu/CreateMenu';
 import BusinessProfile from "./pages/BusinessProfile";
 import CreateVendorProfile from "./pages/newVendor/CreateVendorProfile"
@@ -42,7 +43,8 @@ class App extends Component {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/landing" component={LandingMiddle}/>
               <Route exact path="/restaurants" component={Restaurants}/>
-              <Route component={Home}/>
+              <Route path="/restaurant/:restaurant" component = {Restaurant}/>
+              <Route component={Home} />
             </Switch>
         </Router>
         </div>

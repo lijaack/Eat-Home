@@ -7,7 +7,8 @@ import "./style.css"
 
 class Restaurants extends Component {
   state = {
-      restaurants:[]
+      restaurants:[],
+      location: ""
   };
 
   componentDidMount(){
@@ -24,7 +25,10 @@ class Restaurants extends Component {
       [name]: value
     });
   };
-
+  visitPage(event){
+    console.log(event.target.dataset.id)
+    window.location.href = "/restaurant/" + event.target.dataset.id
+  }
   handleFormSubmit = event => {
     event.preventDefault();
     
@@ -40,22 +44,23 @@ class Restaurants extends Component {
   };
 
   render() {
-      let homes = this.state.restaurants
+      let restaurants = this.state.restaurants
     return (
         <div>
         <div className="jumbotron jumboimg text-center" > 
             <h1 className="text-light"> Choose a Location</h1>
             <br></br>
+            <form type="text"></form>
         </div>
 
         <Container>
             <Row>
                
-                  {homes.map(home =>
-                    <Col size="4">
-                    <RestaurantCard id={home.id} photos={home.photos} name={home.name} description={home.description} />
+                  {restaurants.map(restaurants =>
+                    <Col size="4" key={restaurants.id}>
+                    <RestaurantCard id={restaurants.id} photos={restaurants.image} name={restaurants.name} about={restaurants.about} visitPage={this.visitPage}/>
                     </Col>
-                    )}       
+                  )}       
             </Row>
         </Container>                
     </div>

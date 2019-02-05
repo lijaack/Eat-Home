@@ -3,10 +3,10 @@ INSERT INTO Users (username, password, name, createdAt, updatedAt) VALUES
 	("batman", "password", "bruce", "2019-01-08 03:14:07", "2019-01-08 03:14:07"),
     ("testuser", "password", "testuser", "2019-01-08 03:14:07", "2019-01-08 03:14:07");
 
-INSERT INTO Restaurants (name, about, image, address, createdAt, updatedAt) VALUES
-	("test restauraunt", "kitchen", "https://thebottomline.as.ucsb.edu/wp-content/uploads/2011/11/200px-University_of_California_Seal.svg_.png", "spear street", "2019-01-08 03:14:07", "2019-01-08 03:14:07"),
-	("test restauraunt", "kitchen", "https://thebottomline.as.ucsb.edu/wp-content/uploads/2011/11/200px-University_of_California_Seal.svg_.png", "spear street", "2019-01-08 03:14:07", "2019-01-08 03:14:07"),
-	("test restauraunt", "kitchen", "https://thebottomline.as.ucsb.edu/wp-content/uploads/2011/11/200px-University_of_California_Seal.svg_.png", "spear street", "2019-01-08 03:14:07", "2019-01-08 03:14:07"),
+INSERT INTO Restaurants (name, about, image, address, createdAt, updatedAt, UserId) VALUES
+	("test restauraunt", "kitchen", "https://thebottomline.as.ucsb.edu/wp-content/uploads/2011/11/200px-University_of_California_Seal.svg_.png", "spear street", "2019-01-08 03:14:07", "2019-01-08 03:14:07",1),
+	("test restauraunt", "kitchen", "https://thebottomline.as.ucsb.edu/wp-content/uploads/2011/11/200px-University_of_California_Seal.svg_.png", "spear street", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
+	("test restauraunt", "kitchen", "https://thebottomline.as.ucsb.edu/wp-content/uploads/2011/11/200px-University_of_California_Seal.svg_.png", "spear street", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2)
 
 -- INSERT INTO Menu (name, date, description, location, max_attendees, image, createdAt, updatedAt, CommunityId) VALUES
 -- 	("UCB code event", "2019-04-09 16:20:00", "Coding together to create a web app with a new awesome API called Herd", "Berkeley", 8, "https://storage.googleapis.com/webdesignledger.pub.network/WDL/work-better-with-coders-1.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07", 1),

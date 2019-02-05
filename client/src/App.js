@@ -8,7 +8,7 @@ import API from "./utils/API";
 //pages
 import Restaurants from './pages/restaurants/restaurants';
 import Restaurant from './pages/restaurant/restaurant';
-import CreateMenu from './pages/CreateMenu/CreateMenu';
+import CreateMenu from './pages/CreateMenu';
 import BusinessProfile from "./pages/BusinessProfile";
 import MyRestaurant from "./pages/myRestaurant"
 import Login from './pages/login';

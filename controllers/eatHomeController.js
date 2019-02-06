@@ -22,14 +22,15 @@ module.exports = app => {
             res.json(result)
         })
     });
-    app.get("/api/restaurant", (req,res) =>{
-        console.log(req.body)
+    app.get("/api/restaurant/:id", (req,res) =>{
+        console.log(req.params.id)
         db.Restaurant.findOne({
-            where: req.body,
+            where: {
+                id: req.params.id
+            },
             include: [{
                 model: db.Food
             }]
-           
         }).then(result => {
             res.json(result)            
         })

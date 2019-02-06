@@ -22,6 +22,7 @@ class Home extends Component {
         });
         
         API.getRestaurants().then(res =>{
+            console.log(res)
             this.setState({restaurants: res.data});
         });
 
@@ -48,7 +49,7 @@ class Home extends Component {
                     <br></br>
                     {!this.state.login ? <div id="sign-up"><a href="/signup" className="btn btn-success">Sign Up</a></div>:""}
                     <form className="searchLocation">
-                   <LocationSearch/>
+                   {/* <LocationSearch/> */}
                     <button type="button" className="btn btn-success searchBtn">Search for a meal</button>
                     </form>
          

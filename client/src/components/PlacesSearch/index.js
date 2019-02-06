@@ -7,7 +7,7 @@ class SearchBar extends React.Component {
     super(props);
     this.autocompleteInput = React.createRef();
     this.autocomplete = null;
-    this.handlePlaceChanged = this.handlePlaceChanged.bind(this);
+//    this.handlePlaceChanged = this.handlePlaceChanged.bind(this);
   }
 
   componentDidMount() {
@@ -17,10 +17,10 @@ class SearchBar extends React.Component {
     this.autocomplete.addListener('place_changed', this.handlePlaceChanged);
   }
 
-  handlePlaceChanged(){
-    const place = this.autocomplete.getPlace();
-    this.props.onPlaceLoaded(place);
-  }
+//  handlePlaceChanged(){
+//    const place = this.autocomplete.getPlace();
+//    this.props.onPlaceLoaded(place);
+//  }
 
 
 

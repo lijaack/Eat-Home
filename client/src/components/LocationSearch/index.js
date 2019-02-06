@@ -44,6 +44,8 @@
 //         document.head.append(script);
 //   }
 
+        let script = document.createElement("script")
+        script.type = "text/javascript";
 
 //   render() {
 //     return (

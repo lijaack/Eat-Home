@@ -9,7 +9,7 @@ const Example = (props) => {
       <Card>
         <CardImg top className="card-image-top" src={props.photos}  alt="Card image cap" />
         <CardBody>
-          <CardTitle>{props.name}</CardTitle>
+          <CardTitle className="card-title">{props.name}</CardTitle>
           <CardText>{props.about}</CardText>
           <Button 
             data-id={props.id}

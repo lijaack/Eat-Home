@@ -29,9 +29,13 @@ export default {
     return axios.get("/api/restaurants/city",city)
   },
   createItem:(item)=>{
-    console.log("hello")
-
     return axios.post("/newitem",item)
+  },
+  getAllFood:()=>{
+    return axios.get("/api/menu/all")
+  },
+  getFoodRestaurant:(id)=>{
+    return axios.get("/api/menu/id",id)
   }
 
 };

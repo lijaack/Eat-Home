@@ -3,13 +3,16 @@ import React, { Component } from "react";
 import { Col, Row, Container} from "../../components/Grid";
 import "./style.css"
 import RestaurantCard from "../../components/RestaurantCard";
+import FoodCard from "../../components/FoodCard";
+
 import API from "../../utils/API";
 
 //state 
 class Home extends Component {
     state={
         login: false,
-        restaurants: []
+        restaurants: [],
+        food: []
     }
 
     componentDidMount(){
@@ -20,7 +23,11 @@ class Home extends Component {
         API.getRestaurants().then(res =>{
             this.setState({restaurants: res.data});
         });
-    
+        API.getAllFood().then(res =>{
+            console.log("hello")
+            this.setState({food: res.data});
+        });
+        
     }
     visitPage(event){
         console.log(event.target.dataset.id)
@@ -30,6 +37,8 @@ class Home extends Component {
     
     render() {
         let restaurants = this.state.restaurants
+        let food = this.state.food
+
         return (
             <div>
                 <div className="jumbotron jumboimg text-center" > 
@@ -72,12 +81,11 @@ class Home extends Component {
                     
                     <h2 className="text-center">Popular Meals</h2>
                     <Row>
-                    {restaurants.map(restaurants =>
-                    <Col size="3" key={restaurants.id}>
-                    <RestaurantCard id={restaurants.id} photos={restaurants.image} name={restaurants.name} about={restaurants.about} visitPage={this.visitPage}/>
+                    {food.map(food =>
+                    <Col size="3" key={food.id}>
+                    <FoodCard id={food.id} restaurantid={food.RestaurantId} photos={food.image} name={food.name} price={food.price} ingredient={food.ingredient} visitPage={this.visitPage}/>
                     </Col>
                     )}    
-                
                         
                     </Row>
                     <h2 className="text-center">Popular Restaurants</h2>

@@ -39,7 +39,6 @@ class CreateMenu extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("1")
     if (this.state.name && this.state.ingredient && this.state.price && this.state.image) {
       API.createItem({
         name: this.state.name,

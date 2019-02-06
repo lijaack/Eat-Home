@@ -9,13 +9,12 @@ import MyResaurant from "./myRestaurant"
 class Profile extends Component {
 
     state = {
-        user:[]
-     
+        user:[]  
     };
     componentDidMount(){
         API.getUser().then(res => {
-          this.setState({user: res.data});
-        });
+            this.setState({user: res.data});    
+          });
     }
 
     render() {
@@ -26,8 +25,6 @@ class Profile extends Component {
         }else{
             return (             
                 <MyResaurant
-                id ={ this.state.user.Restaurant.id}
-
                 />
             )
         }

@@ -7,6 +7,9 @@ node_modules/.yarn-integrity
 /.pnp
 .pnp.js
 
+# api keys
+.env  
+
 # testing
 /coverage
 

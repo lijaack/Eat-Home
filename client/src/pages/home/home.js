@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Col, Row, Container} from "../../components/Grid";
 import "./style.css"
 import RestaurantCard from "../../components/RestaurantCard";
+import LocationSearch from "../../components/LocationSearch";
 import API from "../../utils/API";
 
 //state 
@@ -21,6 +22,7 @@ class Home extends Component {
             this.setState({restaurants: res.data});
         });
     
+    
     }
     visitPage(event){
         console.log(event.target.dataset.id)
@@ -35,12 +37,11 @@ class Home extends Component {
                 <div className="jumbotron jumboimg text-center" > 
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
-                    {!this.state.login ? <div id="sign-up"><a href="/signup" class="btn btn-success">Sign Up</a></div>:""}
-                    
-                        <form className="searchLocation">
-                            <input type="location" name="location"></input>
-                            <button type="button" className="btn btn-success searchBtn">Search for a meal</button>
-                        </form>
+                    {!this.state.login ? <div id="sign-up"><a href="/signup" className="btn btn-success">Sign Up</a></div>:""}
+                    <form className="searchLocation">
+                   <LocationSearch/>
+                    <button type="button" className="btn btn-success searchBtn">Search for a meal</button>
+                    </form>
          
                 </div>
     

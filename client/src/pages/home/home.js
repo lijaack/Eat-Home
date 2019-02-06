@@ -5,6 +5,7 @@ import "./style.css"
 import RestaurantCard from "../../components/RestaurantCard";
 import FoodCard from "../../components/FoodCard";
 
+import LocationSearch from "../../components/LocationSearch";
 import API from "../../utils/API";
 
 //state 
@@ -23,6 +24,7 @@ class Home extends Component {
         API.getRestaurants().then(res =>{
             this.setState({restaurants: res.data});
         });
+
         API.getAllFood().then(res =>{
             console.log("hello")
             this.setState({food: res.data});
@@ -44,12 +46,11 @@ class Home extends Component {
                 <div className="jumbotron jumboimg text-center" > 
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
-                    {!this.state.login ? <div id="sign-up"><a href="/signup" class="btn btn-success">Sign Up</a></div>:""}
-                    
-                        <form className="searchLocation">
-                            <input type="location" name="location"></input>
-                            <button type="button" className="btn btn-success searchBtn">Search for a meal</button>
-                        </form>
+                    {!this.state.login ? <div id="sign-up"><a href="/signup" className="btn btn-success">Sign Up</a></div>:""}
+                    <form className="searchLocation">
+                   <LocationSearch/>
+                    <button type="button" className="btn btn-success searchBtn">Search for a meal</button>
+                    </form>
          
                 </div>
     

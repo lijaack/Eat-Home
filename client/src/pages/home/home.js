@@ -19,6 +19,13 @@ class Home extends Component {
         });
         
         API.getRestaurants().then(res =>{
+<<<<<<< HEAD
+            console.log(res.data);
+        });
+    
+    }
+
+=======
             this.setState({restaurants: res.data});
         });
     
@@ -28,6 +35,7 @@ class Home extends Component {
         console.log(event.target.dataset.id)
         window.location.href = "/restaurant/" + event.target.dataset.id
     }
+>>>>>>> dc98debfc42acfb353001d54f1922085b4ce1723
 
     
     render() {

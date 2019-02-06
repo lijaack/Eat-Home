@@ -46,8 +46,8 @@ class CreateMenu extends Component {
         price: this.state.price,
         image: this.state.image,
         RestaurantId: this.state.user.Restaurant.id
-      })
-        .then(res => {
+      }).then(res => {
+        console.log("redirecting")
           window.location.href = "/myrestaurant"
         })
         .catch(err => console.log(err));

@@ -51,20 +51,19 @@ module.exports = app => {
 
 
 
-
     app.post("/newvendor", (req,res) => {
         db.Restaurant.create(
             req.body
-        ).then(
-            console.log("vendor created")
-        )
+        ).then(result=> {
+            res.json(result)
+        })
     })
     app.post("/newitem", (req,res) => {
         db.Food.create(
             req.body
-        ).then(
-            console.log("food created")
-        )
+        ).then(result=> {
+            res.json(result)
+        })
     })
 
    

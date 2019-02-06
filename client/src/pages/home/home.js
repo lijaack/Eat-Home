@@ -33,7 +33,6 @@ class Home extends Component {
         
     }
     visitPage(event){
-        console.log(event.target.dataset.id)
         window.location.href = "/restaurant/" + event.target.dataset.id
     }
 

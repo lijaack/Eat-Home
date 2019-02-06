@@ -2,15 +2,17 @@
 import React, { Component } from "react";
 import { Col, Row, Container} from "../../components/Grid";
 import "./style.css"
+import axios from "axios";
 import RestaurantCard from "../../components/RestaurantCard";
-import LocationSearch from "../../components/LocationSearch";
+import PlacesSearch from "../../components/PlacesSearch";
 import API from "../../utils/API";
 
 //state 
 class Home extends Component {
     state={
         login: false,
-        restaurants: []
+        restaurants: [],
+        location: [],
     }
 
     componentDidMount(){
@@ -29,6 +31,14 @@ class Home extends Component {
         window.location.href = "/restaurant/" + event.target.dataset.id
     }
 
+    getHomes = location => {
+        console.log("getting homes")
+        const API_KEY = process.env.REACT_APP_GOOGLEMAP_API_KEY
+        axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}")
+            .then(res =>
+                  this.setState({ location: res.data }))
+    }
+
     
     render() {
         let restaurants = this.state.restaurants
@@ -39,8 +49,8 @@ class Home extends Component {
                     <br></br>
                     {!this.state.login ? <div id="sign-up"><a href="/signup" className="btn btn-success">Sign Up</a></div>:""}
                     <form className="searchLocation">
-                   <LocationSearch/>
-                    <button type="button" className="btn btn-success searchBtn">Search for a meal</button>
+                   <PlacesSearch/>
+                    <button type="button" className="btn btn-success searchBtn" onClick={this.getHomes}>Search for a meal</button>
                     </form>
          
                 </div>

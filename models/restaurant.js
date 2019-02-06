@@ -7,16 +7,16 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: "Personal"
         },
         image:{
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         about: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         address: {
 
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false,
         }
     });

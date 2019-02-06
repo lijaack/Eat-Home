@@ -3,7 +3,6 @@ const db = require("../models");
 module.exports = app => {
     app.get("/account", (req,res)=>{
         if(req.user){
-            console.log(req.user)
             res.json(req.user);
         } else{
             res.json(false);
@@ -24,20 +23,47 @@ module.exports = app => {
         })
     });
     app.get("/api/restaurant", (req,res) =>{
-
+        console.log(req.body)
         db.Restaurant.findOne({
+            where: req.body,
+            include: [{
+                model: db.Food
+            }]
+           
+        }).then(result => {
+            res.json(result)            
+        })
+    });
+    app.get("/api/menu/all", (req,res) =>{
+        db.Food.findAll({
+        }).then(result => {
+            res.json(result)
+        })
+    });
+    app.get("/api/menu/id", (req,res) =>{
+        db.Food.findAll({
             where: req.body
         }).then(result => {
             res.json(result)
         })
     });
 
+
+
+
     app.post("/newvendor", (req,res) => {
         db.Restaurant.create(
             req.body
-        ).then(
-            console.log("vendor created")
-        )
+        ).then(result=> {
+            res.json(result)
+        })
+    })
+    app.post("/newitem", (req,res) => {
+        db.Food.create(
+            req.body
+        ).then(result=> {
+            res.json(result)
+        })
     })
 
    

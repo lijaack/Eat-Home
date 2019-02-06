@@ -31,11 +31,8 @@ class Restaurants extends Component {
   }
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("hi")
-      API.signUp({
-          username: this.state.username,
-          password: this.state.password,
-          name: this.state.name
+      API.getRestaurantsCity({
+        
       })
           .then(res => console.log(res))
           .catch(err => console.log(err));

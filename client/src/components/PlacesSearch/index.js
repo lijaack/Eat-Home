@@ -24,10 +24,10 @@ class SearchBar extends React.Component {
 
       handlePlaceChanged(){
         const place = this.autocomplete.getPlace();
-//        console.log(place.formatted_address);
+        //console.log(place.formatted_address);
           this.setState({value: place.formatted_address});
           console.log(this.state.value)
-//        this.props.onPlaceLoaded(place);
+        // this.props.onPlaceLoaded(place);
       }
 
 

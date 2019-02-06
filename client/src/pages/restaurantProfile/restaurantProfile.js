@@ -1,15 +1,16 @@
 //imports
-import Jumbotron from "../components/Jumbotron";
+import Jumbotron from "../../components/Jumbotron";
 import React, { Component } from "react";
 import Slider from "react-slick";
-import { Col, Row, Container} from "../components/Grid";
-import Images from "../components/Images"
-import API from "../utils/API";
+import { Col, Row, Container} from "../../components/Grid";
+//import Images from "../components/Images"
+import API from "../../utils/API";
+//import "./style.css"
 
 
 //Profile page shows 1 restaurant
 //state 
-class Profile extends Component {
+class restaurantProfile extends Component {
     state = {
         restaurantName: "",
         image: "",
@@ -37,11 +38,12 @@ render() {
     return (
         <div>
         <section className = "restaurant name">
-        <Jumbotron height="100"> 
-            <h1> Restaurant Name</h1>
-        </Jumbotron>
+        <div className="jumbotron jumboimg text-center" > 
+                    <h1 className="text-light"> Restaurant Name</h1>
+                    </div>
+        </section>
+        <section className = "menu">
         <Jumbotron height= "500">
-         
           <Col size="md-12" >
             <Slider {...settings}> 
                <h4> Menu 1</h4>
@@ -49,6 +51,7 @@ render() {
              </Slider>
             </Col>
         </Jumbotron>
+        </section>
         
            <Col size = "md-12">
            <Jumbotron height = "500"> 
@@ -59,10 +62,10 @@ render() {
             </p>
            </Jumbotron>
            </Col>
-           </section>
+     
       
         </div>
     )}
 }
 
-export default Profile;
+export default restaurantProfile;

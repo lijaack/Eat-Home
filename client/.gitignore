@@ -3,6 +3,7 @@
 # dependencies
 client/node_modules
 /node_modules
+node_modules/.yarn-integrity
 /.pnp
 .pnp.js
 

@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Food = sequelize.define("Food", {
-        product: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -8,6 +8,13 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         price: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        ingredient: {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
@@ -22,9 +29,9 @@ module.exports = function(sequelize, DataTypes) {
 
     Food.associate = (models) =>{
         Food.belongsTo(models.Restaurant, {
-            foreignKey:{
-                allowNull: false
-            }
+            // foreignKey:{
+            //     allowNull: false
+            // }
         })
     }
 

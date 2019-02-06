@@ -1,39 +1,25 @@
 import API from "../../utils/API";
 import React, { Component } from "react";
 import { Col, Row, Container} from "../../components/Grid";
-import RestaurantCard from "../../components/RestaurantCard";
+import MenuItem from "../../components/MenuItem";
 
 
 class Restaurants extends Component {
   state = {
-      restaurants:[],
-      location: ""
+      food:[]
   };
 
   componentDidMount(){
     API.getRestaurant({
       id: this.props.match.params.id
-    }).then(res => {
-        console.log(res.data)
-        this.setState({restaurants: res.data})
+    }).then(res => { 
+        this.setState({food: res.data.Food})
     });
   }
 
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    
-  };
-
   render() {
-      let restaurants = this.state.restaurants
+    let food = this.state.food
     return (
         <div>
         <div className="jumbotron  text-center" > 
@@ -43,7 +29,11 @@ class Restaurants extends Component {
 
         <Container>
             <Row>
-           
+              {food.map(food =>
+              <Col size="3" key={food.id}>
+              <MenuItem id={food.id} restaurantid={food.RestaurantId} photos={food.image} name={food.name} price={food.price} ingredient={food.ingredient}/>
+              </Col>
+              )}    
             </Row>
         </Container>                
     </div>

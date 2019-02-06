@@ -14,7 +14,6 @@ class Profile extends Component {
     };
     componentDidMount(){
         API.getUser().then(res => {
-            console.log(res.data.Restaurant)
           this.setState({user: res.data});
         });
     }
@@ -26,7 +25,10 @@ class Profile extends Component {
             )
         }else{
             return (             
-                <MyResaurant/>
+                <MyResaurant
+                id ={ this.state.user.Restaurant.id}
+
+                />
             )
         }
     }

@@ -39,6 +39,13 @@ module.exports = app => {
             console.log("vendor created")
         )
     })
+    app.post("/newitem", (req,res) => {
+        db.Food.create(
+            req.body
+        ).then(
+            console.log("food created")
+        )
+    })
 
    
         

@@ -2,9 +2,7 @@ import axios from "axios";
 
 export default {
   getUser: ()=>{
-    console.log("hello")
     return axios.get("/account", ()=>{
-      console.log("done")
     })
   },
   login: (data)=>{
@@ -15,7 +13,6 @@ export default {
     return axios.post("/signup", newuser)
   },
   signOut: ()=>{
-    console.log("signing out")
     return axios.get("/signout")
   },
   //creates a new vendor
@@ -30,6 +27,11 @@ export default {
   },
   getRestaurantsCity:(city)=>{
     return axios.get("/api/restaurants/city",city)
+  },
+  createItem:(item)=>{
+    console.log("hello")
+
+    return axios.post("/newitem",item)
   }
 
 };

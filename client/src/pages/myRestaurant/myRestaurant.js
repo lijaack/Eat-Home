@@ -17,8 +17,8 @@ class Profile extends Component {
     };
     componentDidMount(){
         API.getUser().then(res => {
-            console.log(res.data)
           this.setState({user: res.data});
+          console.log(this.state.user.Restaurant.id)
         });
     }
   
@@ -52,7 +52,7 @@ class Profile extends Component {
             <Container>
                 <Row>
                 <h1>Menu</h1>
-                <button>Add item</button>
+                <a href="/createmenu">(+ Add)</a>
                 </Row>
             </Container>
         )

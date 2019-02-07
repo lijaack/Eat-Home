@@ -11,6 +11,7 @@ module.exports = app => {
     })
 
     app.get("/api/restaurants", (req,res) =>{
+        console.log("Restaurant called")
         db.Restaurant.findAll(
         ).then(result => {
             res.json(result)
@@ -33,6 +34,8 @@ module.exports = app => {
     });
 
     app.post("/newvendor", (req,res) => {
+        console.log("hi")
+
         db.Restaurant.create(
             req.body
         ).then(

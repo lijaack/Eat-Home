@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import { Col, Row, Container} from "../../components/Grid";
 //import Images from "../components/Images"
 import API from "../../utils/API";
-//import "./style.css"
+import "./style.css"
 
 
 //Profile page shows 1 restaurant
@@ -15,18 +15,22 @@ class restaurantProfile extends Component {
         restaurantName: "",
         image: "",
         address: "",
+        about: "",
         menuImages: []
     };
 
     //api call to get restaurant info and change state
     getRestaurant = () => {
-        API.getRestaurant({})
-
-        //this.state.restaurantName = response.restaurant
-        //this.state.image = response.image
-        //this.state.address = resoponse.address
-        //this.state.menuImages = response.menuImages
+        API.getRestaurants().then(res => {
+            console.log("Restaurants!")
+           console.log(res.data)
+           this.setState({restaurantName: res.data[0].name,
+                            about: res.data[0].about,
+                           address: res.data[0].address,
+                           image: res.data[0].image});
+        })
     }
+    
 
 //render
 render() {
@@ -37,10 +41,14 @@ render() {
 
     return (
         <div>
+        {this.getRestaurant()}
         <section className = "restaurant name">
         <div className="jumbotron jumboimg text-center" > 
-                    <h1 className="text-light"> Restaurant Name</h1>
+                    <h1 className="text-light"> Restaurant Name: {this.state.restaurantName}</h1>
+                    <h1 className="text-light"> About: {this.state.about}</h1>
+                    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSwcCXzHm_pgt4Zm75tp159ZtrsbPDk_5QZvJY8olgAtzf1YZh" />
                     </div>
+                   
         </section>
         <section className = "menu">
         <Jumbotron height= "500">
@@ -57,13 +65,11 @@ render() {
            <Jumbotron height = "500"> 
             <h3>Contact Info </h3>
             <p> 
-               1000 Spear Street 
-               San Francisco, CA 95001
+               {this.state.address}
             </p>
            </Jumbotron>
            </Col>
      
-      
         </div>
     )}
 }

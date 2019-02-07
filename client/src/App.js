@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-<<<<<<< HEAD
 import RestaurantProfile from "./pages/restaurantProfile/restaurantProfile";
-import CreateVendorProfile from "./pages/newVendor/CreateVendorProfile"
-=======
+import CreateVendorProfile from "./pages/myRestaurant/createRestaurant"
 //components
 import {NavUser, Nav} from './components/Nav';
 import LandingMiddle from './components/LandingMiddle';
@@ -15,7 +13,6 @@ import Restaurant from './pages/restaurant/restaurant';
 import CreateMenu from './pages/CreateMenu/CreateMenu';
 import BusinessProfile from "./pages/BusinessProfile";
 import MyRestaurant from "./pages/myRestaurant"
->>>>>>> dc98debfc42acfb353001d54f1922085b4ce1723
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Home from './pages/home/home';
@@ -48,6 +45,8 @@ class App extends Component {
               <Route exact path="/landing" component={LandingMiddle}/>
               <Route exact path="/restaurants" component={Restaurants}/>
               <Route exact path="/restaurant/:id" component = {Restaurant}/>
+              <Route exact path="/newvendor" component={CreateVendorProfile} />
+              <Route exact path="/profile" component={RestaurantProfile} />
               <Route component={Home} />
             </Switch>
         </Router>
@@ -55,7 +54,6 @@ class App extends Component {
 
       )
 
-<<<<<<< HEAD
     //route access restricted to the following routes if user is not logged in
     return(
       <Router>
@@ -74,8 +72,6 @@ class App extends Component {
         </div>
       </Router> 
     )
-=======
->>>>>>> dc98debfc42acfb353001d54f1922085b4ce1723
   }
 }
 

@@ -16,7 +16,8 @@ class Profile extends Component {
     state = {
         restaurantName: "",
         about: "",
-        image: ""
+        image: "",
+        address: ""
     };
 
     handleInputChange = event => {
@@ -34,7 +35,9 @@ class Profile extends Component {
         API.createVendor({
             name: this.state.restaurantName,
             about: this.state.about,
-            image: this.state.image
+            image: this.state.image,
+            address: this.state.address,
+            userId: 1
         })
             .then(res => console.log(res))
             .catch(err => console.log(err));
@@ -42,9 +45,10 @@ class Profile extends Component {
 
         //Empty the text fields
         this.setState({
-            businessName: "",
+            restaurantName: "",
             about: "",
-            image: ""
+            image: "",
+            address: ""
         });
     }
 
@@ -62,7 +66,7 @@ class Profile extends Component {
                         name="restaurantName"
                         onChange={this.handleInputChange}
                         type="text"
-                        placeholder="Business Name"
+                        placeholder="Restaurant Name"
                     />
                     <label for="about">About:</label>
                     <Input
@@ -81,7 +85,16 @@ class Profile extends Component {
                         type="text area"
                         placeholder="Image"
                     />
+                     <label for="address">Address:</label>
+                    <Input
+                        value={this.state.address}
+                        name="address"
+                        onChange={this.handleInputChange}
+                        type="text area"
+                        placeholder="Address"
+                    />
                     </form>
+                    
                     <button type="button" className="btn btn-success" onClick={this.handleFormSubmit}>Submit</button>
                 </Container>
             </section>

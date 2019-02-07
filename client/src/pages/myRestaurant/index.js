@@ -9,14 +9,12 @@ import MyResaurant from "./myRestaurant"
 class Profile extends Component {
 
     state = {
-        user:[]
-     
+        user:[]  
     };
     componentDidMount(){
         API.getUser().then(res => {
-            console.log(res.data.Restaurant)
-          this.setState({user: res.data});
-        });
+            this.setState({user: res.data});    
+          });
     }
 
     render() {
@@ -26,7 +24,8 @@ class Profile extends Component {
             )
         }else{
             return (             
-                <MyResaurant/>
+                <MyResaurant
+                />
             )
         }
     }

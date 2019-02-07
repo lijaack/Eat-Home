@@ -19,10 +19,10 @@ class CreateMenu extends Component {
 
   state = {
     user: [],
-    restaurantName: "",
-    about: "",
-    image: "",
-    address: ""
+    name: "",
+    ingredient: "",
+    price: "",
+    image: ""
   };
   componentDidMount() {
     API.getUser().then(res => {
@@ -32,7 +32,6 @@ class CreateMenu extends Component {
   }
   handleInputChange = event => {
     const { name, value } = event.target;
-
     this.setState({
       [name]: value
     });
@@ -40,20 +39,16 @@ class CreateMenu extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.restaurantName && this.state.about && this.state.image && this.state.address) {
-      API.createVendor({
-        name: this.state.restaurantName,
-        about: this.state.about,
-        address: this.state.address,
+    if (this.state.name && this.state.ingredient && this.state.price && this.state.image) {
+      API.createItem({
+        name: this.state.name,
+        ingredient: this.state.ingredient,
+        price: this.state.price,
         image: this.state.image,
-        UserId: this.state.user.id
-      })
-        .then(res => {
-          this.setState({
-            businessName: "",
-            about: "",
-            image: ""
-          })
+        RestaurantId: this.state.user.Restaurant.id
+      }).then(res => {
+        console.log("redirecting")
+          window.location.href = "/myrestaurant"
         })
         .catch(err => console.log(err));
     }
@@ -62,46 +57,36 @@ class CreateMenu extends Component {
 
   }
 
-    // import React from 'react';
-    // import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-    
-    // export default class CreateMenu extends React.Component {
+
   render() {
     return (
-      <Form className="col-md-4">
-        <FormGroup>
-          <Label for="menuItem">Menu Item</Label>
-          <Input type="text" name="menuItem" id="menuItem" placeholder="pizza" />
-        </FormGroup>
+      <Container>
+        <Form className="col-md-4">
+          <FormGroup>
+            <Label for="name">Item</Label>
+            <Input type="text" name="name" id="name" onChange={this.handleInputChange} placeholder="pizza" />
+          </FormGroup>
 
 
-        <FormGroup>
-          <Label for="ingredientList">Ingredient List</Label>
-          <Input type="text" name="ingredientList" id="ingredientList" placeholder="flour, water, sauce, cheese" />
-        </FormGroup>
+          <FormGroup>
+            <Label for="ingredient">Ingredient List</Label>
+            <Input type="text" name="ingredient" id="ingredient" onChange={this.handleInputChange} placeholder="flour, water, sauce, cheese" />
+          </FormGroup>
 
 
-        <FormGroup>
-          <Label for="menuItemWriteup">Menu Item Writeup</Label>
-          <Input type="textarea" name="text" id="menuItemWriteup" />
-        </FormGroup>
+          <FormGroup>
+            <Label for="price">Price</Label>
+            <Input type="textarea" name="price" onChange={this.handleInputChange} id="price" />
+          </FormGroup>
 
-        <FormGroup>
-          <Label for="Item Photo">Item Photo URL</Label>
-          <Input type="text" name="photoURL" id="photoURL" placeholder="http://lorempixel.com/output/food-q-c-640-480-3.jpg" />
-        </FormGroup>
+          <FormGroup>
+            <Label for="image">Item Photo URL</Label>
+            <Input type="text" name="image" onChange={this.handleInputChange} id="image" placeholder="http://lorempixel.com/output/food-q-c-640-480-3.jpg" />
+          </FormGroup>
 
-
-        <FormGroup>
-          <Label for="exampleFile">Upload Photo</Label>
-          <Input type="file" name="file" id="exampleFile" />
-          <FormText color="muted">
-            If you have a photo of this item upload it here.
-              </FormText>
-        </FormGroup>
-
-        <Button>Submit</Button>
-      </Form>
+          <Button color="success" onClick={this.handleFormSubmit}>Submit</Button>
+        </Form>
+      </Container>
     );
   }
 } export default CreateMenu;

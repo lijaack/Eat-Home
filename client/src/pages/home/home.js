@@ -2,14 +2,19 @@
 import React, { Component } from "react";
 import { Col, Row, Container} from "../../components/Grid";
 import "./style.css"
+import axios from "axios";
 import RestaurantCard from "../../components/RestaurantCard";
+import FoodCard from "../../components/FoodCard";
+
+import PlacesSearch from "../../components/PlacesSearch";
 import API from "../../utils/API";
 
 //state 
 class Home extends Component {
     state={
         login: false,
-        restaurants: []
+        restaurants: [],
+        food: [],
     }
 
     componentDidMount(){
@@ -18,29 +23,44 @@ class Home extends Component {
         });
         
         API.getRestaurants().then(res =>{
+            console.log(res)
             this.setState({restaurants: res.data});
         });
-    
+
+        API.getAllFood().then(res =>{
+            console.log("hello")
+            this.setState({food: res.data});
+        });
+        
     }
     visitPage(event){
-        console.log(event.target.dataset.id)
         window.location.href = "/restaurant/" + event.target.dataset.id
+    }
+
+    getHomes = location => {
+        console.log("getting homes")
+          console.log(this.state.value)
+        const API_KEY = process.env.REACT_APP_GOOGLEMAP_API_KEY
+        axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}")
+            .then(res =>
+                  this.setState({ location: res.data }))
     }
 
     
     render() {
         let restaurants = this.state.restaurants
+        let food = this.state.food
+
         return (
             <div>
                 <div className="jumbotron jumboimg text-center" > 
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
-                    {!this.state.login ? <div id="sign-up"><a href="/signup" class="btn btn-success">Sign Up</a></div>:""}
-                    
-                        <form className="searchLocation">
-                            <input type="location" name="location"></input>
-                            <button type="button" className="btn btn-success searchBtn">Search for a meal</button>
-                        </form>
+                    {!this.state.login ? <div id="sign-up"><a href="/signup" className="btn btn-success">Sign Up</a></div>:""}
+                    <form className="searchLocation">
+                   <PlacesSearch/>
+                    <button type="button" className="btn btn-success searchBtn" onClick={this.getHomes}>Search for a meal</button>
+                    </form>
          
                 </div>
     
@@ -72,12 +92,11 @@ class Home extends Component {
                     
                     <h2 className="text-center">Popular Meals</h2>
                     <Row>
-                    {restaurants.map(restaurants =>
-                    <Col size="3" key={restaurants.id}>
-                    <RestaurantCard id={restaurants.id} photos={restaurants.image} name={restaurants.name} about={restaurants.about} visitPage={this.visitPage}/>
+                    {food.map(food =>
+                    <Col size="3" key={food.id}>
+                    <FoodCard id={food.id} restaurantid={food.RestaurantId} photos={food.image} name={food.name} price={food.price} ingredient={food.ingredient} visitPage={this.visitPage}/>
                     </Col>
                     )}    
-                
                         
                     </Row>
                     <h2 className="text-center">Popular Restaurants</h2>

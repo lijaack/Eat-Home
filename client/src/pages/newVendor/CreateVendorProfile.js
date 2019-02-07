@@ -36,7 +36,7 @@ class Profile extends Component {
             about: this.state.about,
             image: this.state.image,
             address: this.state.address,
-            userId: 1
+            //userId: 1
         })
             .then(res => console.log(res))
             .catch(err => console.log(err));

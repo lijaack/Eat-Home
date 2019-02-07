@@ -24,25 +24,30 @@ class restaurantProfile extends Component {
         console.log("id " +this.props.match.params.id)
         API.getRestaurant({
           id: parseInt(this.props.match.params.id)
-        }).then(res => { 
+        }).then(res => {
+            console.log('12345654321234565432123456543212345')
+            console.log(res)
             this.setState({restaurantName:res.data.name,
                             image: res.data.image,
                             address:res.data.address,
-                            about:res.data.about})
+                            about:res.data.about},
+                            () => {
+                                console.log(this.props.match.params.id)
+                                API.getFoodRestaurant({
+                                        id: parseInt(this.props.match.params.id)
+                                    }).then(res => { 
+                                        console.log(res.data)
+                                        this.setState({menu: res.data.map(val => val.name)})
+                                        console.log("MENU"+this.state.menu)
+                                        
+                                    });
+                            })
     
           console.log(res.data)
            // this.setState({food: res.data.Food})
         });
 
-        API.getFoodRestaurant({
-            id: parseInt(this.props.match.params.id)
-          }).then(res => { 
-    
-            console.log(res.data)
-              this.state.menu = res.data.map(val => val.name)
-              console.log("MENU"+this.state.menu)
-              
-          });
+        
           
       }
 
@@ -65,14 +70,22 @@ render() {
         </section>
         <section className = "menu">
         <Jumbotron height= "500">
+        
           <Col size="md-12" >
             <Slider {...settings}> 
             
+
+ 
+            
+            
+
+            {this.state.menu.length > 0 ? this.state.menu.map(item => <h4>{item}</h4>) : <h4>hi</h4>}
+             
+               
               
-               <h4> {this.state.menu[0]} </h4>
-               <h4> {this.state.menu[1]} </h4>
-               <h4> {this.state.menu[0]} </h4>
              </Slider>
+             
+             
             </Col>
         </Jumbotron>
         </section>

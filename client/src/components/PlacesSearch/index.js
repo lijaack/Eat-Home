@@ -34,8 +34,8 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-            <input ref={this.autocompleteInput} value={this.state.value} id="autocomplete" placeholder="Enter your address"
-            type="text" ></input>
+        <input ref={this.autocompleteInput} text-value={this.state.value} id="autocomplete" placeholder="Enter your address"
+         type="text"></input>
         );
     }
 }

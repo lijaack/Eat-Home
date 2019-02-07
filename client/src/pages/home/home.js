@@ -15,7 +15,7 @@ class Home extends Component {
         login: false,
         restaurants: [],
         food: [],
-        value: "",
+        location: '',
     }
 
     componentDidMount(){
@@ -39,18 +39,21 @@ class Home extends Component {
     }
 
     getHomes = location => {
-        console.log("getting homes");
-        console.log(this.state.value);
+        console.log("getting homes")
+        console.log(this.state.location)
         const API_KEY = process.env.REACT_APP_GOOGLEMAP_API_KEY
         axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}")
             .then(res =>
                   this.setState({ location: res.data }))
     }
     
-    handleChange(event) {
-        this.setState({value: event.target.value})
-        console.log(this.state.value)
-    }
+    handleInputChange = event => {
+  this.setState({
+    location: event.target.attributes['text-value'].text
+,
+  });
+};
+
 
     
     render() {
@@ -63,9 +66,10 @@ class Home extends Component {
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
                     {!this.state.login ? <div id="sign-up"><a href="/signup" className="btn btn-success">Sign Up</a></div>:""}
-                    <form className="searchLocation" onChange={this.handleChange.bind(this)}>
-                        <h1 className="text-light"> Start Your Food Search</h1>
-                   <PlacesSearch />
+                    <form className="searchLocation" >
+                                <h1 className="text-light">Start Finding Your Chef</h1>
+
+                   <PlacesSearch onChange={this.handleInputChange}/>
                     <button type="button" className="btn btn-success searchBtn" onClick={this.getHomes}>Search for a meal</button>
                     </form>
          

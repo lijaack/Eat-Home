@@ -27,7 +27,7 @@ export default {
     return axios.get("/api/restaurant/" + data.id)
   },
   getRestaurantsCity:(city)=>{
-    return axios.get("/api/restaurants/city",city)
+    return axios.post("/api/restaurants/city", city)
   },
   createItem:(item)=>{
     return axios.post("/newitem",item)

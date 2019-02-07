@@ -17,10 +17,11 @@ module.exports = app => {
             res.json(result)
         })
     });
-    app.get("/api/restaurants/city", (req,res) =>{
+    app.post("/api/restaurants/city", (req,res) =>{
         db.Restaurant.findAll({
             where: req.body
         }).then(result => {
+            console.log(result)
             res.json(result)
         })
     });

@@ -16,21 +16,35 @@ class restaurantProfile extends Component {
         image: "",
         address: "",
         about: "",
-        menuImages: []
+        menu: []
     };
 
     //api call to get restaurant info and change state
-    getRestaurant = () => {
-        API.getRestaurants().then(res => {
-            console.log("Restaurants!")
-           console.log(res.data)
-           this.setState({restaurantName: res.data[0].name,
-                            about: res.data[0].about,
-                           address: res.data[0].address,
-                           image: res.data[0].image});
-        })
-    }
+    componentDidMount(){
+        console.log("id " +this.props.match.params.id)
+        API.getRestaurant({
+          id: parseInt(this.props.match.params.id)
+        }).then(res => { 
+            this.setState({restaurantName:res.data.name,
+                            image: res.data.image,
+                            address:res.data.address,
+                            about:res.data.about})
     
+          console.log(res.data)
+           // this.setState({food: res.data.Food})
+        });
+
+        API.getFoodRestaurant({
+            id: parseInt(this.props.match.params.id)
+          }).then(res => { 
+    
+            console.log(res.data)
+              this.state.menu = res.data.map(val => val.name)
+              console.log("MENU"+this.state.menu)
+              
+          });
+          
+      }
 
 //render
 render() {
@@ -41,12 +55,11 @@ render() {
 
     return (
         <div>
-        {this.getRestaurant()}
         <section className = "restaurant name">
         <div className="jumbotron jumboimg text-center" > 
                     <h1 className="text-light"> Restaurant Name: {this.state.restaurantName}</h1>
                     <h1 className="text-light"> About: {this.state.about}</h1>
-                    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSwcCXzHm_pgt4Zm75tp159ZtrsbPDk_5QZvJY8olgAtzf1YZh" />
+                    <img src ={this.state.image} height = "250"/>
                     </div>
                    
         </section>
@@ -54,8 +67,11 @@ render() {
         <Jumbotron height= "500">
           <Col size="md-12" >
             <Slider {...settings}> 
-               <h4> Menu 1</h4>
-               <h4> Menu 2</h4>
+            
+              
+               <h4> {this.state.menu[0]} </h4>
+               <h4> {this.state.menu[1]} </h4>
+               <h4> {this.state.menu[0]} </h4>
              </Slider>
             </Col>
         </Jumbotron>

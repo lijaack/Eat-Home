@@ -45,7 +45,7 @@ class App extends Component {
               {login ? "": <Route exact path="/signup" component={Signup} />}
               <Route exact path="/landing" component={LandingMiddle}/>
               <Route exact path="/restaurants" component={Restaurants}/>
-              <Route exact path="/restaurant/:id" component = {Restaurant}/>
+              <Route exact path="/restaurant/:id" component = {RestaurantProfile}/>
               <Route exact path="/newvendor" component={CreateVendorProfile} />
               <Route exact path="/profile" component={RestaurantProfile} />
               <Route component={Home} />

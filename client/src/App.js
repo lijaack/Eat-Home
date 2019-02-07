@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import RestaurantProfile from "./pages/restaurantProfile/restaurantProfile";
-<<<<<<< HEAD
-import CreateVendorProfile from "./pages/myRestaurant/createRestaurant"
-=======
 import CreateVendorProfile from "./pages/newVendor/CreateVendorProfile"
->>>>>>> c417fc6023da8561675556e81fc2010b8e9fe8f5
 //components
 import {NavUser, Nav} from './components/Nav';
 import LandingMiddle from './components/LandingMiddle';
@@ -37,7 +33,6 @@ class App extends Component {
   render(){
     //checks if user is logged in
     let login=this.state.login;
-<<<<<<< HEAD
       return(
         <div>
         {login ? <NavUser/>: <Nav/>}
@@ -61,8 +56,6 @@ class App extends Component {
       )
 
     //route access restricted to the following routes if user is not logged in
-=======
->>>>>>> c417fc6023da8561675556e81fc2010b8e9fe8f5
     return(
       <div>
       {login ? <NavUser/>: <Nav/>}
@@ -78,16 +71,10 @@ class App extends Component {
             <Route exact path="/restaurant/:id" component = {Restaurant}/>
             <Route component={Home} />
           </Switch>
-<<<<<<< HEAD
-        </div>
-      </Router> 
-    )
-=======
       </Router>
       </div>
 
     ) 
->>>>>>> c417fc6023da8561675556e81fc2010b8e9fe8f5
   }
 }
 

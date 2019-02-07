@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Col, Row, Container} from "../../components/Grid";
 import RestaurantCard from "../../components/RestaurantCard";
 import "./style.css"
+import { Input } from "../../components/Form";
 
 
 class Restaurants extends Component {
@@ -25,17 +26,22 @@ class Restaurants extends Component {
       [name]: value
     });
   };
+
   visitPage(event){
     console.log(event.target.dataset.id)
     window.location.href = "/restaurant/" + event.target.dataset.id
   }
+
+
   handleFormSubmit = event => {
     event.preventDefault();
+    if(this.state.location){
       API.getRestaurantsCity({
-        
+        address: this.state.location
       })
-          .then(res => console.log(res))
+          .then(res => this.setState({restaurants: res.data}))
           .catch(err => console.log(err));
+    }
     
   };
 
@@ -48,7 +54,13 @@ class Restaurants extends Component {
             <form className="searchLocation">
                 <label for="location"><h1 className="text-light"> Choose a Location</h1></label>
                 <br/>
-                <input type="location" name="location"></input>
+                <Input
+                        value={this.state.location}
+                        name="location"
+                        onChange={this.handleInputChange}
+                        type="text"
+                        placeholder="location"
+                  />
                 <button type="button" className="btn btn-success searchBtn" onClick={this.handleFormSubmit}>Search Location</button>
             </form>
         </div>

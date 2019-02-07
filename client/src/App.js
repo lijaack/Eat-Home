@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import RestaurantProfile from "./pages/restaurantProfile/restaurantProfile";
+<<<<<<< HEAD
 import CreateVendorProfile from "./pages/myRestaurant/createRestaurant"
+=======
+import CreateVendorProfile from "./pages/newVendor/CreateVendorProfile"
+>>>>>>> c417fc6023da8561675556e81fc2010b8e9fe8f5
 //components
 import {NavUser, Nav} from './components/Nav';
 import LandingMiddle from './components/LandingMiddle';
@@ -10,12 +14,13 @@ import API from "./utils/API";
 //pages
 import Restaurants from './pages/restaurants/restaurants';
 import Restaurant from './pages/restaurant/restaurant';
-import CreateMenu from './pages/CreateMenu/CreateMenu';
+import CreateMenu from './pages/CreateMenu';
 import BusinessProfile from "./pages/BusinessProfile";
 import MyRestaurant from "./pages/myRestaurant"
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Home from './pages/home/home';
+import axios from 'axios';
 
 
 class App extends Component {
@@ -32,6 +37,7 @@ class App extends Component {
   render(){
     //checks if user is logged in
     let login=this.state.login;
+<<<<<<< HEAD
       return(
         <div>
         {login ? <NavUser/>: <Nav/>}
@@ -55,23 +61,33 @@ class App extends Component {
       )
 
     //route access restricted to the following routes if user is not logged in
+=======
+>>>>>>> c417fc6023da8561675556e81fc2010b8e9fe8f5
     return(
+      <div>
+      {login ? <NavUser/>: <Nav/>}
       <Router>
-        <div>
-          <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/profile" component={RestaurantProfile} />
+            {login ? <Route exact path="/myrestaurant" component={MyRestaurant} />: ""}
+            {login ? <Route exact path="/createmenu" component={CreateMenu}/>: ""}
+            {login ? "": <Route exact path="/login" component={Login} />}
+            {login ? "": <Route exact path="/signup" component={Signup} />}
+            <Route exact path="/landing" component={LandingMiddle}/>
             <Route exact path="/restaurants" component={Restaurants}/>
-            { <Route exact path="/newvendor" component={CreateVendorProfile} /> }
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            {/* <Route exact path="/landing" component={LandingMiddle}/> */}
+            <Route exact path="/restaurant/:id" component = {Restaurant}/>
             <Route component={Home} />
           </Switch>
+<<<<<<< HEAD
         </div>
       </Router> 
     )
+=======
+      </Router>
+      </div>
+
+    ) 
+>>>>>>> c417fc6023da8561675556e81fc2010b8e9fe8f5
   }
 }
 

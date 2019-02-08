@@ -22,11 +22,11 @@ app.use(bodyParser.json());
 
 
 
-app.use(session({
-  secret: 'secret',
-  saveUninitialized:true,
-  resave: true
-}));
+// app.use(session({
+//   secret: 'secret',
+//   saveUninitialized:true,
+//   resave: true
+// }));
 
 app.use(passport.initialize());
 // app.use(passport.session());

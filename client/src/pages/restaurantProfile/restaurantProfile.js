@@ -46,9 +46,6 @@ class restaurantProfile extends Component {
           console.log(res.data)
            // this.setState({food: res.data.Food})
         });
-
-        
-          
       }
 
 //render
@@ -73,16 +70,7 @@ render() {
         
           <Col size="md-12" >
             <Slider {...settings}> 
-            
-
- 
-            
-            
-
             {this.state.menu.length > 0 ? this.state.menu.map(item => <h4>{item}</h4>) : <h4>hi</h4>}
-             
-               
-              
              </Slider>
              
              

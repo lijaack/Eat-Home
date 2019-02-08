@@ -10,11 +10,14 @@ class Restaurants extends Component {
   };
 
   componentDidMount(){
-    console.log(this.props.match.params.id)
+    console.log("id " +this.props.match.params.id)
     API.getRestaurant({
-      id: this.props.match.params.id
+      id: parseInt(this.props.match.params.id)
     }).then(res => { 
-        this.setState({food: res.data.Food})
+      console.log("++++++++++++++++++"
+      )
+      console.log(res.data)
+       // this.setState({food: res.data.Food})
     });
   }
 
@@ -24,7 +27,7 @@ class Restaurants extends Component {
     return (
         <div>
         <div className="jumbotron  text-center" > 
-            <h1 className=""> Menu</h1>
+            <h1 className=""> Menu </h1>
             <br></br>
         </div>
 

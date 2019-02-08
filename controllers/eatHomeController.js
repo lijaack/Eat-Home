@@ -3,6 +3,7 @@ const db = require("../models");
 module.exports = app => {
     app.get("/account", (req,res)=>{
         if(req.user){
+            console.log(req.user)
             res.json(req.user);
         } else{
             res.json(false);
@@ -10,6 +11,7 @@ module.exports = app => {
     })
 
     app.get("/api/restaurants", (req,res) =>{
+        
         db.Restaurant.findAll(
         ).then(result => {
             res.json(result)
@@ -24,49 +26,31 @@ module.exports = app => {
         })
     });
     app.get("/api/restaurant/:id", (req,res) =>{
-        console.log(req.params.id)
         db.Restaurant.findOne({
-            where: {
-                id: req.params.id
-            },
-            include: [{
-                model: db.Food
-            }]
-        }).then(result => {
-            res.json(result)            
-        })
-    });
-    app.get("/api/menu/all", (req,res) =>{
-        db.Food.findAll({
+            where: {id:req.params.id}
         }).then(result => {
             res.json(result)
         })
     });
-    app.get("/api/menu/id", (req,res) =>{
-        db.Food.findAll({
-            where: req.body
-        }).then(result => {
-            res.json(result)
-        })
-    });
-
-
-
 
     app.post("/newvendor", (req,res) => {
+        console.log("hi")
+
         db.Restaurant.create(
             req.body
-        ).then(result=> {
+        ).then(
+            console.log("vendor created")
+        )
+    })
+
+    app.get("/api/menu/:id", (req,res) =>{
+        db.Food.findAll({
+            where: {RestaurantId:req.params.id}
+        }).then(result => {
             res.json(result)
         })
     })
-    app.post("/newitem", (req,res) => {
-        db.Food.create(
-            req.body
-        ).then(result=> {
-            res.json(result)
-        })
-    })
+
 
    
         

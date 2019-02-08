@@ -35,9 +35,8 @@ export default {
   getAllFood:()=>{
     return axios.get("/api/menu/all")
   },
-  getFoodRestaurant:(data)=>{
-    
-    return axios.get("/api/menu/" +data.id)
+  getFoodRestaurant:(id)=>{
+    return axios.get("/api/menu/id",id)
   }
 
 };

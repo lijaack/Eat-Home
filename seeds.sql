@@ -11,13 +11,13 @@ INSERT INTO Restaurants (name, about, image, address, createdAt, updatedAt, User
 
 INSERT INTO Food (name, price, ingredient, image, createdAt, updatedAt, RestaurantId) VALUES
 ("dumplings", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",1),
-("chicken", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
-("fish", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",3),
-("pizza", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
-("noodles", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",3),
-("curry", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
-("sushi", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
-("fish katsu", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",3),
-("pork katsu", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",1),
-("pork cutlet", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
-("buffalo wings", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",1);
+("dumplings", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
+("dumplings", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",3),
+("dumplings", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
+("dumplings", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",3),
+("dumplings", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
+("dumplings", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
+("dumplings", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",3),
+("dumplings", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",1),
+("dumplings", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
+("dumplings", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",1);

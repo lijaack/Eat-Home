@@ -6,7 +6,6 @@ export function NavUser() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{borderBottom: "1px solid rgba(46,62,72,.12)"}}>
       <a className="navbar-brand" href="/">Home</a>
-      <PlacesSearch/>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
       </button>

@@ -5,17 +5,24 @@ import "./style.css"
 import axios from "axios";
 import RestaurantCard from "../../components/RestaurantCard";
 import FoodCard from "../../components/FoodCard";
-
+import Modal from "../../components/Modal";
 import PlacesSearch from "../../components/PlacesSearch";
 import API from "../../utils/API";
 
 //state 
 class Home extends Component {
-    state={
-        login: false,
-        restaurants: [],
-        food: [],
-        place: '',
+    constructor(props){
+        super(props)
+        this.myRef=null    
+        this.state={
+            login: false,
+            restaurants: [],
+            food: [],
+            place: '',
+            isModalOpen: true,
+        };
+        this.showModal = this.showModal.bind(this);
+        this.toggle = this.toggle.bind(this);
     }
 
     componentDidMount(){
@@ -39,26 +46,38 @@ class Home extends Component {
     getHomes = e => {
         console.log("getting homes")
         console.log("current location:" + this.state.place);
-        let city = this.state.place.split(",")
-        city = city[1].trim();
-        console.log("Current city: " + city);
-        API.getRestaurantsCity({address: city}).then(res =>{
+        if(this.state.place){
+            let city = this.state.place.split(",");
+            city = city[1].trim();
+            console.log("Current city: " + city);
+            API.getRestaurantsCity({address: city}).then(res =>{
             this.setState({restaurants: res.data})
-                .catch(err => console.log(err));
-;
-        })
-//        const API_KEY = process.env.REACT_APP_GOOGLEMAP_API_KEY
-//        axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}")
-//            .then(res =>
-//                  this.setState({ location: res.data }))
+                this.state.restaurants.length > 0 ? this.scrollToMyRef() : this.toggle();
+                console.log("No nearby homes!");
+        })}
     }
     
     showPlaceDetails(place) {
     //console.log(place);
-    this.setState({ place });
-  }
-    
+        this.setState({ place });
+    }
 
+    scrollToMyRef = () => window.scrollTo({
+        top: this.myRef.offsetTop, 
+        behavior: 'smooth'
+    })
+
+    toggle() {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
+    }
+
+    showModal() {
+        this.setState({
+            isModalOpen: true
+        });
+    }
 
 
     
@@ -116,6 +135,7 @@ class Home extends Component {
                     )}    
                         
                     </Row>
+            <div ref={ (ref) => this.myRef=ref }></div>
                     <h2 className="text-center">Popular Restaurants</h2>
                     <Row>
                     {restaurants.map(restaurants =>
@@ -128,7 +148,11 @@ class Home extends Component {
                     </Row>
 
 
-                </Container>                
+                </Container> 
+        <Modal
+            isOpen={this.state.isModalOpen}
+            toggle={this.toggle}
+        />  
             </div>
         )
     }

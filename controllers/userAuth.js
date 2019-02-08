@@ -7,29 +7,21 @@ module.exports = function(app) {
     passport.use(new LocalStrategy(
         function( username, password, done) {            
             db.User.findOne({ where:{ username: username}}).then(function(user){  
-                console.log(username);
-
-
                 if (!user) {
-                    console.log("Incorrect username")
                     return done(null, false, { message: 'Incorrect username.' });
                 }
                 if (!user.validPassword(password)) {
-                    console.log("Incorrect password")
                     return done(null, false, { message: 'Incorrect password.' });
                 }
-                console.log("success")
                 return done(null, user);
             });
         }
       ));
       passport.serializeUser(function(user, done) {
-        console.log("serializeUser");
         done(null, user.id);
       });
     
       passport.deserializeUser(function(id, done) {
-        console.log("deserializeUser");
         db.User.findOne({
             where: {id: id},
             include: [{
@@ -51,13 +43,11 @@ module.exports = function(app) {
 
 
     app.get('/signout', function(req, res){
-        console.log("logging out")
         req.logout();
         res.redirect('/');
     })
     
     app.post("/signup", (req,res) => {
-        console.log("hello")
         db.User.create(
             req.body
         ).then(data => {

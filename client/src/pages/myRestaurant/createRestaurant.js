@@ -67,7 +67,7 @@ class Profile extends Component {
                       name="restaurantName"
                       onChange={this.handleInputChange}
                       type="text"
-                      placeholder="Restaurant Name"
+                      placeholder="Business Name"
                   />
                   <label for="about">About:</label>
                   <Input

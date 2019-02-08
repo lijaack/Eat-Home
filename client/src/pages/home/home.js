@@ -23,7 +23,6 @@ class Home extends Component {
         });
         
         API.getRestaurants().then(res =>{
-            this.setState({restaurants: res.data});
             console.log(res)
             this.setState({restaurants: res.data});
         });

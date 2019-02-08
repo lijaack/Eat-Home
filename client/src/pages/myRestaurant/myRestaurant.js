@@ -1,9 +1,5 @@
-import Jumbotron from "../../components/Jumbotron";
 import React, { Component } from "react";
-import Slider from "react-slick";
-import { Input, TextArea, FormBtn } from "../../components/Form";
 import { Col, Row, Container} from "../../components/Grid";
-import Images from "../../components/Images";
 import API from "../../utils/API";
 import MenuItem from "../../components/MenuItem";
 

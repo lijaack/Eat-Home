@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, FormBtn } from "../components/Form";
 
 
 function readCookie(name) {
@@ -34,18 +34,10 @@ class Login extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state.username)
     API.login({
       username: this.state.username,
       password: this.state.password
-    // }).then(
-    //   function (data) {
-    //       console.log("login creating cookies: ", data.id)
-    //       document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-    //       document.cookie = "userpassword=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-    //       document.cookie = "username=" + this.state.username + ";";
-    //       document.cookie = "userpassword=" + this.state.userpasssword + ";";
-          // location.reload();
+ 
       }).then(
       window.location.href = "/"
     )

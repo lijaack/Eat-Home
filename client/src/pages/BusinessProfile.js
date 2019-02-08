@@ -2,8 +2,7 @@
 import Jumbotron from "../components/Jumbotron";
 import React, { Component } from "react";
 import Slider from "react-slick";
-import { Col, Row, Container} from "../components/Grid";
-import Images from "../components/Images"
+import { Col} from "../components/Grid";
 import API from "../utils/API";
 
 

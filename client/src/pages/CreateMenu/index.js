@@ -1,16 +1,13 @@
 //imports
-import Jumbotron from "../../components/Jumbotron";
 import React, { Component } from "react";
-import Slider from "react-slick";
-import { Input, TextArea, FormBtn } from "../../components/Form";
-import { Col, Row, Container } from "../../components/Grid";
-import Images from "../../components/Images";
+import { Input} from "../../components/Form";
+import {Container } from "../../components/Grid";
 import API from "../../utils/API";
 // import Form from 'react-bootstrap/Form';
 // import Button from 'react-bootstrap/Button';
 // import InputGroup from 'react-bootstrap/InputGroup';
 // import React from 'react';
-import { Button, Form, FormGroup, Label, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label} from 'reactstrap';
 
 
 //Profile page shows 1 restaurant
@@ -47,7 +44,6 @@ class CreateMenu extends Component {
         image: this.state.image,
         RestaurantId: this.state.user.Restaurant.id
       }).then(res => {
-        console.log("redirecting")
           window.location.href = "/myrestaurant"
         })
         .catch(err => console.log(err));

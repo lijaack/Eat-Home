@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import RestaurantProfile from "./pages/restaurantProfile/restaurantProfile";
-import CreateVendorProfile from "./pages/newVendor/CreateVendorProfile"
 //components
 import {NavUser, Nav} from './components/Nav';
 import LandingMiddle from './components/LandingMiddle';
@@ -11,12 +9,10 @@ import API from "./utils/API";
 import Restaurants from './pages/restaurants/restaurants';
 import Restaurant from './pages/restaurant/restaurant';
 import CreateMenu from './pages/CreateMenu';
-import BusinessProfile from "./pages/BusinessProfile";
 import MyRestaurant from "./pages/myRestaurant"
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Home from './pages/home/home';
-import axios from 'axios';
 
 
 class App extends Component {

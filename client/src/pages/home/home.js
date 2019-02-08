@@ -15,7 +15,7 @@ class Home extends Component {
         login: false,
         restaurants: [],
         food: [],
-        location: '',
+        place: '',
     }
 
     componentDidMount(){
@@ -24,12 +24,10 @@ class Home extends Component {
         });
         
         API.getRestaurants().then(res =>{
-            console.log(res)
             this.setState({restaurants: res.data});
         });
 
         API.getAllFood().then(res =>{
-            console.log("hello")
             this.setState({food: res.data});
         });
         
@@ -38,21 +36,29 @@ class Home extends Component {
         window.location.href = "/restaurant/" + event.target.dataset.id
     }
 
-    getHomes = location => {
+    getHomes = e => {
         console.log("getting homes")
-        console.log(this.state.location)
-        const API_KEY = process.env.REACT_APP_GOOGLEMAP_API_KEY
-        axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}")
-            .then(res =>
-                  this.setState({ location: res.data }))
+        console.log("current location:" + this.state.place);
+        let city = this.state.place.split(",")
+        city = city[1].trim();
+        console.log("Current city: " + city);
+        API.getRestaurantsCity({city}).then(res =>{
+            this.setState({restaurants: res.data})
+                .catch(err => console.log(err));
+;
+        })
+//        const API_KEY = process.env.REACT_APP_GOOGLEMAP_API_KEY
+//        axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}")
+//            .then(res =>
+//                  this.setState({ location: res.data }))
     }
     
-    handleInputChange = event => {
-  this.setState({
-    location: event.target.attributes['text-value'].text
-,
-  });
-};
+    showPlaceDetails(place) {
+    //console.log(place);
+    this.setState({ place });
+  }
+    
+
 
 
     
@@ -69,7 +75,7 @@ class Home extends Component {
                     <form className="searchLocation" >
                                 <h1 className="text-light">Start Finding Your Chef</h1>
 
-                   <PlacesSearch onChange={this.handleInputChange}/>
+                   <PlacesSearch onPlaceChanged={this.showPlaceDetails.bind(this)}/>
                     <button type="button" className="btn btn-success searchBtn" onClick={this.getHomes}>Search for a meal</button>
                     </form>
          

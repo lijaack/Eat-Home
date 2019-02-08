@@ -14,7 +14,6 @@ class Restaurants extends Component {
 
   componentDidMount(){
     API.getRestaurants().then(res => {
-        console.log(res.data)
         this.setState({restaurants: res.data})
     });
   }
@@ -28,7 +27,6 @@ class Restaurants extends Component {
   };
 
   visitPage(event){
-    console.log(event.target.dataset.id)
     window.location.href = "/restaurant/" + event.target.dataset.id
   }
 

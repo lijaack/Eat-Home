@@ -33,7 +33,6 @@ app.use(passport.session());
 
 // Global variables
 app.use(function(req, res, next) {
-  console.log(req.user)
   res.locals.user = req.user || null;
   next();
 });

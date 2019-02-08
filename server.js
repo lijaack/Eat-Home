@@ -5,6 +5,7 @@ const passport = require('passport');
 const cors = require('cors')
 const PORT = process.env.PORT || 3001;
 const app = express();
+const router = require("express").Router();
 // app.use(cookieParser());
 // var cookieParser = require('cookie-parser');
 
@@ -40,11 +41,11 @@ app.use(function(req, res, next) {
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-  app.get('/*', (request, response) => {
-    response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
-}
 
+}
+router.use(function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 // Routes
 // =============================================================

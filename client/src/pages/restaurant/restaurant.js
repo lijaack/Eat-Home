@@ -9,6 +9,7 @@ class Restaurants extends Component {
       food:[],
       name: '',
       address: '',
+      about: '',
   };
 
   componentDidMount(){
@@ -18,7 +19,8 @@ class Restaurants extends Component {
         console.log(res.data);
         this.setState({food: res.data.Food,
                       name: res.data.name,
-                      address: res.data.address})
+                      address: res.data.address,
+                      about: res.data.about})
     });
   }
 
@@ -30,11 +32,12 @@ class Restaurants extends Component {
         <div className="jumbotron  text-center" > 
             <h1 className=""> {this.state.name}</h1>
             <br></br>
+            <p> {this.state.about}</p>
         </div>
 
         <Container>
         <Row>
-            <Col size="10">
+            <Col size="9">
                 <Row>
                   {food.map(food =>
                   <Col size="4" key={food.id}>
@@ -43,11 +46,16 @@ class Restaurants extends Component {
                   )}    
                 </Row>
             </Col>
-            <Col size="2">
+            <Col size="3">
       <ListGroup>
-        <ListGroupItem>{this.state.name}</ListGroupItem>
+        <ListGroupItem><strong>Restaurant Info:</strong></ListGroupItem>
         <ListGroupItem>{this.state.address}</ListGroupItem>
-        <ListGroupItem>Phone Number</ListGroupItem>
+        <ListGroupItem>(555)-555-5555</ListGroupItem>
+        <ListGroupItem>60 Meals Left!</ListGroupItem>
+        <ListGroupItem><a href="">My Story</a></ListGroupItem>
+        <ListGroupItem>Rating: ☺☺<span>&#x263A;</span></ListGroupItem>
+
+
       </ListGroup>
                 
             </Col>

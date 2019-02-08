@@ -5,7 +5,7 @@ import "./style.css"
 import axios from "axios";
 import RestaurantCard from "../../components/RestaurantCard";
 import FoodCard from "../../components/FoodCard";
-import Modal from "../../components/Modal";
+import Alert from "../../components/Alert";
 import PlacesSearch from "../../components/PlacesSearch";
 import API from "../../utils/API";
 
@@ -19,10 +19,10 @@ class Home extends Component {
             restaurants: [],
             food: [],
             place: '',
-            isModalOpen: true,
+            visible: true,
         };
-        this.showModal = this.showModal.bind(this);
-        this.toggle = this.toggle.bind(this);
+            this.showAlert = this.showAlert.bind(this);
+
     }
 
     componentDidMount(){
@@ -35,7 +35,9 @@ class Home extends Component {
         });
 
         API.getAllFood().then(res =>{
-            this.setState({food: res.data});
+            let foods = res.data;
+            foods = foods.slice(0,8)
+            this.setState({food: foods});
         });
         
     }
@@ -52,8 +54,7 @@ class Home extends Component {
             console.log("Current city: " + city);
             API.getRestaurantsCity({address: city}).then(res =>{
             this.setState({restaurants: res.data})
-                this.state.restaurants.length > 0 ? this.scrollToMyRef() : this.toggle();
-                console.log("No nearby homes!");
+                this.state.restaurants.length > 0 ? this.scrollToMyRef() : this.showAlert(); console.log("No nearby homes!");
         })}
     }
     
@@ -66,18 +67,10 @@ class Home extends Component {
         top: this.myRef.offsetTop, 
         behavior: 'smooth'
     })
+  showAlert() {
+    this.setState({ visible: true });
+  }
 
-    toggle() {
-        this.setState({
-            isModalOpen: !this.state.isModalOpen
-        });
-    }
-
-    showModal() {
-        this.setState({
-            isModalOpen: true
-        });
-    }
 
 
     
@@ -97,7 +90,7 @@ class Home extends Component {
                    <PlacesSearch onPlaceChanged={this.showPlaceDetails.bind(this)}/>
                     <button type="button" className="btn btn-success searchBtn" onClick={this.getHomes}>Search for a meal</button>
                     </form>
-         
+                <Alert toggle={this.showAlert}/>
                 </div>
     
                 <Container>
@@ -126,7 +119,7 @@ class Home extends Component {
                         </Col>
                     </Row>
                     
-                    <h2 className="text-center">Popular Meals</h2>
+                    <h2 className="text-center popular">Popular Meals</h2> <hr></hr>
                     <Row>
                     {food.map(food =>
                     <Col size="3" key={food.id}>
@@ -136,7 +129,7 @@ class Home extends Component {
                         
                     </Row>
             <div ref={ (ref) => this.myRef=ref }></div>
-                    <h2 className="text-center">Popular Restaurants</h2>
+                    <h2 className="text-center popular">Popular Restaurants</h2> <hr></hr>
                     <Row>
                     {restaurants.map(restaurants =>
                     <Col size="3" key={restaurants.id}>
@@ -149,10 +142,6 @@ class Home extends Component {
 
 
                 </Container> 
-        <Modal
-            isOpen={this.state.isModalOpen}
-            toggle={this.toggle}
-        />  
             </div>
         )
     }

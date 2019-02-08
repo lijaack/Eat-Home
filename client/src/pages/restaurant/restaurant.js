@@ -10,7 +10,6 @@ class Restaurants extends Component {
   };
 
   componentDidMount(){
-    console.log(this.props.match.params.id)
     API.getRestaurant({
       id: this.props.match.params.id
     }).then(res => { 

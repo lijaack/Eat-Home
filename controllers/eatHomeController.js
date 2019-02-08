@@ -19,12 +19,10 @@ module.exports = app => {
         db.Restaurant.findAll({
             where: req.body
         }).then(result => {
-            console.log(result)
             res.json(result)
         })
     });
     app.get("/api/restaurant/:id", (req,res) =>{
-        console.log(req.params.id)
         db.Restaurant.findOne({
             where: {
                 id: req.params.id
@@ -42,9 +40,9 @@ module.exports = app => {
             res.json(result)
         })
     });
-    app.get("/api/menu/id", (req,res) =>{
+    app.get("/api/myfood/:id", (req,res) =>{
         db.Food.findAll({
-            where: req.body
+            where: {RestaurantId: req.params.id}
         }).then(result => {
             res.json(result)
         })

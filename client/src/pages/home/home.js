@@ -23,12 +23,10 @@ class Home extends Component {
         });
         
         API.getRestaurants().then(res =>{
-            console.log(res)
             this.setState({restaurants: res.data});
         });
 
         API.getAllFood().then(res =>{
-            console.log("hello")
             this.setState({food: res.data});
         });
         
@@ -38,8 +36,6 @@ class Home extends Component {
     }
 
     getHomes = location => {
-        console.log("getting homes")
-          console.log(this.state.value)
         const API_KEY = process.env.REACT_APP_GOOGLEMAP_API_KEY
         axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}")
             .then(res =>

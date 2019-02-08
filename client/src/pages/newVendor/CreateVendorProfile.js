@@ -1,10 +1,7 @@
 //imports
-import Jumbotron from "../../components/Jumbotron";
 import React, { Component } from "react";
-import Slider from "react-slick";
-import { Input, TextArea, FormBtn } from "../../components/Form";
-import { Col, Row, Container} from "../../components/Grid";
-import Images from "../../components/Images";
+import { Input} from "../../components/Form";
+import {Container} from "../../components/Grid";
 import API from "../../utils/API";
 
 
@@ -15,8 +12,7 @@ class Profile extends Component {
     state = {
         restaurantName: "",
         about: "",
-        image: "",
-        address: ""
+        image: ""
     };
 
     handleInputChange = event => {
@@ -34,9 +30,7 @@ class Profile extends Component {
         API.createVendor({
             name: this.state.restaurantName,
             about: this.state.about,
-            image: this.state.image,
-            address: this.state.address,
-            //userId: 1
+            image: this.state.image
         })
             .then(res => console.log(res))
             .catch(err => console.log(err));
@@ -44,10 +38,9 @@ class Profile extends Component {
 
         //Empty the text fields
         this.setState({
-            restaurantName: "",
+            businessName: "",
             about: "",
-            image: "",
-            address: ""
+            image: ""
         });
     }
 
@@ -65,7 +58,7 @@ class Profile extends Component {
                         name="restaurantName"
                         onChange={this.handleInputChange}
                         type="text"
-                        placeholder="Restaurant Name"
+                        placeholder="Business Name"
                     />
                     <label for="about">About:</label>
                     <Input
@@ -84,16 +77,7 @@ class Profile extends Component {
                         type="text area"
                         placeholder="Image"
                     />
-                     <label for="address">Address:</label>
-                    <Input
-                        value={this.state.address}
-                        name="address"
-                        onChange={this.handleInputChange}
-                        type="text area"
-                        placeholder="Address"
-                    />
                     </form>
-                    
                     <button type="button" className="btn btn-success" onClick={this.handleFormSubmit}>Submit</button>
                 </Container>
             </section>

@@ -23,7 +23,6 @@ export default {
     return axios.get("/api/restaurants")
   },
   getRestaurant:(data)=>{
-    console.log(data)
     return axios.get("/api/restaurant/" + data.id)
   },
   getRestaurantsCity:(city)=>{
@@ -36,8 +35,7 @@ export default {
     return axios.get("/api/menu/all")
   },
   getFoodRestaurant:(data)=>{
-    
-    return axios.get("/api/menu/" +data.id)
+    return axios.get("/api/myfood/" + data.RestaurantId)
   }
 
 };

@@ -65,16 +65,16 @@ module.exports = function(app) {
         });
 
     }); 
-    app.use(passport.session());
-    function isAuthenticated(req,res,next){
-        if(req.user)
-           return next();
-        else
-           return res.status(401).json({
-             error: 'User not authenticated'
-           })
+    // app.use(passport.session());
+    // function isAuthenticated(req,res,next){
+    //     if(req.user)
+    //        return next();
+    //     else
+    //        return res.status(401).json({
+    //          error: 'User not authenticated'
+    //        })
      
-     }
+    //  }
      app.get('/checkauth', isAuthenticated, function(req, res){
      
          res.status(200).json({

@@ -42,10 +42,13 @@ module.exports = app => {
             res.json(result)
         })
     });
-    app.get("/api/menu/id", (req,res) =>{
+    app.get("/api/myfood/:id", (req,res) =>{
+        console.log("helllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllkohelllko")
+        console.log(req.params.id)
         db.Food.findAll({
-            where: req.body
+            where: {RestaurantId: req.params.id}
         }).then(result => {
+            console.log(result)
             res.json(result)
         })
     });

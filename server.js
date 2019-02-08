@@ -29,7 +29,7 @@ app.use(session({
 }));
 
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 // Global variables
 app.use(function(req, res, next) {

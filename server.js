@@ -5,7 +5,8 @@ const passport = require('passport');
 const cors = require('cors')
 const PORT = process.env.PORT || 3001;
 const app = express();
-
+// app.use(cookieParser());
+// var cookieParser = require('cookie-parser');
 
 //enable cross origin
 app.use(cors());

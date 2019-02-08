@@ -33,7 +33,6 @@ app.use(passport.session());
 
 // Global variables
 app.use(function(req, res, next) {
-  console.log(req.user)
   res.locals.user = req.user || null;
   next();
 });
@@ -42,6 +41,10 @@ app.use(function(req, res, next) {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+app.get('*', (request, response) => {
+	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 
 // Routes

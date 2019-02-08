@@ -42,7 +42,7 @@ class Home extends Component {
         let city = this.state.place.split(",")
         city = city[1].trim();
         console.log("Current city: " + city);
-        API.getRestaurantsCity({city}).then(res =>{
+        API.getRestaurantsCity({address: city}).then(res =>{
             this.setState({restaurants: res.data})
                 .catch(err => console.log(err));
 ;

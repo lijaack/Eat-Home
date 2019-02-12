@@ -41,16 +41,14 @@ app.use(function(req, res, next) {
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-
 }
-router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
 
 // Routes
 // =============================================================
 require("./controllers/eatHomeController.js")(app);
-require("./controllers/userAuth.js")(app);
+require("./controllers/userAuth.js")(app)
+const apiRoutes = require("./routes");
+app.use(apiRoutes);
 
 
 // Requiring our models for syncing

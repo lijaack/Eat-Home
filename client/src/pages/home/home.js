@@ -35,12 +35,12 @@ class Home extends Component {
         window.location.href = "/restaurant/" + event.target.dataset.id
     }
 
-    getHomes = location => {
-        const API_KEY = process.env.REACT_APP_GOOGLEMAP_API_KEY
-        axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}")
-            .then(res =>
-                  this.setState({ location: res.data }))
-    }
+    // getHomes = location => {
+    //     const API_KEY = process.env.REACT_APP_GOOGLEMAP_API_KEY
+    //     axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}")
+    //         .then(res =>
+    //               this.setState({ location: res.data }))
+    // }
 
     
     render() {
@@ -53,10 +53,10 @@ class Home extends Component {
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
                     {!this.state.login ? <div id="sign-up"><a href="/signup" className="btn btn-success">Sign Up</a></div>:""}
-                    <form className="searchLocation">
+                    {/* <form className="searchLocation">
                    <PlacesSearch/>
                     <button type="button" className="btn btn-success searchBtn" onClick={this.getHomes}>Search for a meal</button>
-                    </form>
+                    </form> */}
          
                 </div>
     

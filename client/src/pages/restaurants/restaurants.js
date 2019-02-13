@@ -48,19 +48,24 @@ class Restaurants extends Component {
     return (
         <div>
         <div className="jumbotron neighborhoodimg text-center" > 
-            
-            <form className="searchLocation">
-                <label for="location"><h1 className="text-light"> Choose a Location</h1></label>
-                <br/>
-                <Input
-                        value={this.state.location}
-                        name="location"
-                        onChange={this.handleInputChange}
-                        type="text"
-                        placeholder="location"
-                  />
-                <button type="button" className="btn btn-success searchBtn" onClick={this.handleFormSubmit}>Search Location</button>
-            </form>
+            <Row>
+              <Col size="4"></Col>
+              <Col size="4">
+              <form className="searchLocation">
+                  <label for="location"><h1 className="text-light"> Choose a Location</h1></label>
+                  <br/>
+                  <Input
+                          value={this.state.location}
+                          name="location"
+                          onChange={this.handleInputChange}
+                          type="text"
+                          placeholder="location"
+                    />
+                  <button type="button" className="btn btn-success searchBtn" onClick={this.handleFormSubmit}>Search Location</button>
+              </form>
+              </Col>
+              <Col size="4"></Col>
+            </Row>
         </div>
 
         <Container>

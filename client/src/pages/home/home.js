@@ -45,23 +45,6 @@ class Home extends Component {
         window.location.href = "/restaurant/" + event.target.dataset.id
     }
 
-    getHomes = e => {
-        console.log("getting homes")
-        console.log("current location:" + this.state.place);
-        if(this.state.place){
-            let city = this.state.place.split(",");
-            city = city[1].trim();
-            console.log("Current city: " + city);
-            API.getRestaurantsCity({address: city}).then(res =>{
-            this.setState({restaurants: res.data})
-                this.state.restaurants.length > 0 ? this.scrollToMyRef() : this.showAlert(); console.log("No nearby homes!");
-        })}
-    }
-    
-    showPlaceDetails(place) {
-    //console.log(place);
-        this.setState({ place });
-    }
 
     scrollToMyRef = () => window.scrollTo({
         top: this.myRef.offsetTop, 
@@ -84,13 +67,6 @@ class Home extends Component {
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
                     {!this.state.login ? <div id="sign-up"><a href="/signup" className="btn btn-success">Sign Up</a></div>:""}
-                    <form className="searchLocation" >
-                                <h1 className="text-light">Start Finding Your Chef</h1>
-
-                   <PlacesSearch onPlaceChanged={this.showPlaceDetails.bind(this)}/>
-                    <button type="button" className="btn btn-success searchBtn" onClick={this.getHomes}>Search for a meal</button>
-                    </form>
-                <Alert toggle={this.showAlert}/>
                 </div>
     
                 <Container>

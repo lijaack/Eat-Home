@@ -10,6 +10,7 @@ INSERT INTO Restaurants (name, about, image, address, createdAt, updatedAt, User
 	("John's Test Kitchen", "I'm an amateur chef trying out new recipes, someone please eat dinner with me. Oh god I'm so lonely", "http://nebula.wsimg.com/39f00aa837127ee5e264acc08f4e9398?AccessKeyId=F05FFAAB3F92DC92F052&disposition=0&alloworigin=1", "New York", "2019-01-08 03:14:07", "2019-01-08 03:14:07",3);
 
 INSERT INTO Food (name, price, ingredient, image, createdAt, updatedAt, RestaurantId) VALUES
+
 ("dumplings", "$9.99", "pork, lettuce", "https://omnivorescookbook.com/wp-content/uploads/2016/09/1608_Pork-Dumplings_005.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",1),
 ("chicken", "$9.99", "chicken, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
 ("fish", "$9.99", "fish, lettuce", "https://hips.hearstapps.com/del.h-cdn.co/assets/16/09/1457039861-cilantro-chili-lime-glazed-salmon-and-green-beansl1.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",3),
@@ -21,3 +22,4 @@ INSERT INTO Food (name, price, ingredient, image, createdAt, updatedAt, Restaura
 ("pork katsu", "$9.99", "pork, lettuce", "https://c1.staticflickr.com/2/1478/25765602053_aebe020fc2_b.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",1),
 ("pork cutlet", "$9.99", "pork, lettuce", "https://img.grouponcdn.com/deal/aWgqiCmpAX7QJHTQxXg8tr/ihs_0-124_0034-2048x1229/v1/c700x420.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",2),
 ("buffalo wings", "$9.99", "pork, lettuce", "https://dinnerthendessert.com/wp-content/uploads/2018/08/Buffalo-Wings-4.jpg", "2019-01-08 03:14:07", "2019-01-08 03:14:07",1);
+

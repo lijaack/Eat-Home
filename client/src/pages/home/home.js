@@ -5,16 +5,24 @@ import "./style.css"
 import axios from "axios";
 import RestaurantCard from "../../components/RestaurantCard";
 import FoodCard from "../../components/FoodCard";
-
+import Alert from "../../components/Alert";
 import PlacesSearch from "../../components/PlacesSearch";
 import API from "../../utils/API";
 
 //state 
 class Home extends Component {
-    state={
-        login: false,
-        restaurants: [],
-        food: [],
+    constructor(props){
+        super(props)
+        this.myRef=null    
+        this.state={
+            login: false,
+            restaurants: [],
+            food: [],
+            place: '',
+            visible: true,
+        };
+            this.showAlert = this.showAlert.bind(this);
+
     }
 
     componentDidMount(){
@@ -27,7 +35,9 @@ class Home extends Component {
         });
 
         API.getAllFood().then(res =>{
-            this.setState({food: res.data});
+            let foods = res.data;
+            foods = foods.slice(0,8)
+            this.setState({food: foods});
         });
         
     }
@@ -35,12 +45,16 @@ class Home extends Component {
         window.location.href = "/restaurant/" + event.target.dataset.id
     }
 
-    // getHomes = location => {
-    //     const API_KEY = process.env.REACT_APP_GOOGLEMAP_API_KEY
-    //     axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}")
-    //         .then(res =>
-    //               this.setState({ location: res.data }))
-    // }
+
+    scrollToMyRef = () => window.scrollTo({
+        top: this.myRef.offsetTop, 
+        behavior: 'smooth'
+    })
+  showAlert() {
+    this.setState({ visible: true });
+  }
+
+
 
     
     render() {
@@ -53,11 +67,6 @@ class Home extends Component {
                     <h1 className="text-light"> Eat Home</h1>
                     <br></br>
                     {!this.state.login ? <div id="sign-up"><a href="/signup" className="btn btn-success">Sign Up</a></div>:""}
-                    {/* <form className="searchLocation">
-                   <PlacesSearch/>
-                    <button type="button" className="btn btn-success searchBtn" onClick={this.getHomes}>Search for a meal</button>
-                    </form> */}
-         
                 </div>
     
                 <Container>
@@ -86,7 +95,7 @@ class Home extends Component {
                         </Col>
                     </Row>
                     
-                    <h2 className="text-center">Popular Meals</h2>
+                    <h2 className="text-center popular">Popular Meals</h2> <hr></hr>
                     <Row>
                     {food.map(food =>
                     <Col size="3" key={food.id}>
@@ -95,7 +104,8 @@ class Home extends Component {
                     )}    
                         
                     </Row>
-                    <h2 className="text-center">Popular Restaurants</h2>
+            <div ref={ (ref) => this.myRef=ref }></div>
+                    <h2 className="text-center popular">Popular Restaurants</h2> <hr></hr>
                     <Row>
                     {restaurants.map(restaurants =>
                     <Col size="3" key={restaurants.id}>
@@ -107,7 +117,7 @@ class Home extends Component {
                     </Row>
 
 
-                </Container>                
+                </Container> 
             </div>
         )
     }

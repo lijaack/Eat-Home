@@ -1,5 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
+import PlacesSearch from "../../components/PlacesSearch";
 
 export function NavUser() {
   return (
@@ -12,6 +13,7 @@ export function NavUser() {
       <div className="navbar-nav ml-auto">
         <a className="nav-item nav-link" href="/restaurants">Restaurants</a>
         <a className="nav-item nav-link" href="/myrestaurant">My Restaurant</a>
+        <a className="nav-item nav-link" href="/myrestaurant">My Profile</a>
         <a className="nav-item nav-link" href="/signout" onClick={() => {API.signOut(); window.location.href = "/"}}>Sign out</a>
         </div>
       </div>

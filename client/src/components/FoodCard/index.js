@@ -14,7 +14,7 @@ const Example = (props) => {
           <Button 
             data-id={props.restaurantid}
             onClick={props.visitPage} 
-            color="success">Visit
+            color="success">Let's Eat!
             </Button>
         </CardBody>
       </Card>
